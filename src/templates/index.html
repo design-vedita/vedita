@@ -1,0 +1,95 @@
+//= blocks/head.html
+<body>
+    <div class="page-preloader"><span class="spinner"></span></div>
+
+    //= blocks/svg.html
+
+    <header>
+        <div class="menu js-menu">
+            <!-- Левая часть меню -->
+            <div class="menu__left">
+
+            </div>
+
+            <!-- Правая часть меню -->
+            <div class="menu__right">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)">
+                                О нас
+                                <svg class="arrow-menu"><use xlink:href="#arrow-menu" /></svg>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="javascript:void(0)">Отзывы</a></li>
+                            <li><a href="javascript:void(0)">Вакансии</a></li>
+                            <li><a href="javascript:void(0)">Аналитика</a></li>
+                            <li><a href="javascript:void(0)">Публикации</a></li>
+                            <li><a href="javascript:void(0)">Новости</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            Услуги
+                            <svg class="arrow-menu">
+                                <use xlink:href="#arrow-menu" />
+                            </svg>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="javascript:void(0)">Создание сайтов</a></li>
+                            <li><a href="javascript:void(0)">Продвижение сайтов</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)">Портфолио</a></li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            1С-Битрикс
+                            <svg class="arrow-menu">
+                                <use xlink:href="#arrow-menu" />
+                            </svg>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="javascript:void(0)">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:void(0)">Семинары 1С-Битрикс</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Шапка сайта верх-->
+        <div class="header-top">
+            <div class="header-top__logo">
+                <img src="../img/logo.png" alt=""/>
+            </div>
+            <div class="header-top__burger-menu js-transform">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="header-top__call-request">
+                <div class="header-top__call-request__top-animate top-animate"></div>
+                <div class="header-top__call-request__right-animate right-animate"></div>
+                <div class="header-top__call-request__bottom-animate bottom-animate"></div>
+                <a href="javascript:void(0)">Заказать звонок</a>
+            </div>
+
+            <div class="header-top__phone">
+                <p>+7 <span>(495)</span> 215-51-36</p>
+            </div>
+        </div>
+        <!-- Шапка сайта слайдер -->
+        <div class="header-bottom">
+            <div class="header-bottom__slider swiper-container">
+                <div class="header-bottom__slider__swiper-wrapper swiper-wrapper">
+                    <div class="header-bottom__slider__swiper-wrapper__slide swiper-slide" style="background-image: url(../img/slide1.jpg)"></div>
+                    <div class="header-bottom__slider__swiper-wrapper__slide swiper-slide" style="background-image: url(../img/slide2.jpg)"></div>
+                </div>
+                <div class="header-bottom__slider__pagination swiper-pagination"></div>
+            </div>
+        </div>
+    </header>
+
+    //= blocks/scripts.html
+</body>
+</html>
