@@ -102,24 +102,28 @@ body {
                     width: 15px;
                     height: 15px;
                     fill: #fff;
-                    right: -28px;
+                    left: auto;
+                    margin-left: 18px;
                     position: absolute;
-                    top: 7px;
-                    display: inline-block;
+                    top: 14px;
+                    display: inline;
+                    cursor: pointer;
+                    opacity: 1;
                   }
 
                   @keyframes hover-menu {
                     0% {
                       opacity: 1;
                       transform: rotate(0deg);
-                      top: 7px;
-                      right: -28px;
+                      top: 14px;
+                      right: 0;
+                      fill: red;
                     }
                     25% {
                       opacity: 0;
                       transform: rotate(0deg);
-                      top: 7px;
-                      right: -28px;
+                      top: 14px;
+                      right: 0;
                     }
                     50%{
                       opacity: 0;
@@ -128,19 +132,19 @@ body {
                     }
                     75% {
                       opacity: 0;
-                      top: 55px;
+                      top: 75px;
                       transform: rotate(180deg);
                       right: 0;
                     }
                     100% {
                       opacity: 1;
-                      top: 55px;
+                      top: 75px;
                       transform: rotate(180deg);
                       right: 0;
                     }
                   }
 
-                  &:hover .arrow-menu {
+                  &.show-before .arrow-menu {
                     opacity: 0;
                     animation: hover-menu 1.5s ease forwards;
                   }
@@ -161,47 +165,41 @@ body {
                     display: none;
                   }
 
-                  &:hover:before {
+                  &.show-before:before {
                     width: 100%;
                     transition: width 1s ease-in-out;
                   }
 
                   & > a {
-                    font: 21px @ubuntu, sans-serif;
+                    font: 33px @ubuntu, sans-serif;
                     color: #fff;
                     text-decoration: none;
                     text-transform: uppercase;
                     position: relative;
-                  }
-
-                  @keyframes width-a {
-                    0% {
-                      display: none;
-                    }
-
+                    transition: color .5s ease;
                   }
 
                   &:hover > a {
-                    animation: width-a 1.5s ease forwards;
+                    color: #9fc187;
+                    transition: color .5s ease;
                   }
 
                   & ul.submenu {
                     position: absolute;
                     list-style: none;
-                    top: 25px;
-                    left: 16%;
-                    padding-top: 30px;
+                    top: 75px;
+                    left: 50%;
                     opacity: 0;
                     visibility: hidden;
-                    transition: opacity .5s ease;
                     z-index: 10;
                     padding-bottom: 15px;
+                    transition: opacity 1s ease;
 
                       & li {
                         margin-bottom: 20px;
 
                           & a {
-                            font: 15px @ubuntu, sans-serif;
+                            font: 18px @ubuntu, sans-serif;
                             color: #9fc187;
                             text-transform: uppercase;
                             text-decoration: none;
@@ -209,11 +207,10 @@ body {
                       }
                   }
 
-                  &:hover > ul.submenu {
+                  &.show-before > ul.submenu {
                     opacity: 1;
                     visibility: visible;
                     transition: opacity 1s ease;
-                    padding-left: 34%;
                   }
               }
 
@@ -326,7 +323,7 @@ body {
               display: block;
               width: 100%;
               height: 100%;
-              font: 15px @condens_reg, sans-sefif;
+              font: 0.9375em @condens_reg, sans-sefif; /*15px*/
               color: #89ad70;
               text-decoration: none;
               text-transform: uppercase;
@@ -336,7 +333,7 @@ body {
 
             @-moz-document url-prefix() {
               & a {
-                font: 18px @condens_reg, sans-sefif;
+                font: 1.125em @condens_reg, sans-sefif; /*18px*/
                 padding-top: 10px;
               }
             }
@@ -465,15 +462,15 @@ body {
         }
 
         &__phone {
-          font: 18px @condens_reg, sans-sefif;
+          font: 1.625em @condens_reg, sans-sefif; /*26px*/
           color: #3d3556;
           float: right;
-          margin-top: 27px;
+          margin-top: 21px;
           margin-right: 0.5729166666666667%; /* 11/1920 */
 
             & {
               @-moz-document url-prefix() {
-                margin-top: 24px;
+                margin-top: 18px;
               }
             }
 
