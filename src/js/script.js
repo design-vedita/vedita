@@ -12,13 +12,12 @@
         });
 
         /*-----------------visible menu----------------*/
-        var burger = document.getElementsByClassName('js-transform')[0],
-            menu = document.getElementsByClassName('js-menu')[0],
-            menu_div = menu.getElementsByTagName('div');
+        var burger = document.getElementsByClassName('js-transform')[0], //get button menu
+            menu = document.getElementsByClassName('js-menu')[0], // get the menu itself
+            menu_div = menu.getElementsByTagName('div')[0],
+            client_height = document.documentElement.clientHeight;
 
-            console.log(menu);
-
-
+            menu.style.cssText = 'height: '+ client_height + 'px; transform: translateY(-'+ client_height + 'px);';
 
             burger.onclick = function(){
                 burger.classList.toggle('menu--open');
@@ -28,6 +27,20 @@
             }
 
         /*----------------slider index---------------*/
+
+        function slider_size() {
+            var client_height = document.documentElement.clientHeight,
+                slider = document.getElementsByClassName('js-slider')[0];
+
+            slider.style.height = (client_height - 137) + 'px';
+        }
+
+        slider_size();
+
+        $(window).resize(function() {
+            slider_size();
+        });
+
         var swiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
             paginationClickable: true,
@@ -54,9 +67,20 @@
         $($rectangle).click(function (){
             $("body,html").animate({
                 scrollTop: height
-            }, 1000);
+            }, 800);
             return false;
         });
+
+        /*--------------------portfolio click arrow top-----------------*/
+            var portfolio_top = document.getElementsByClassName('js-up-page')[0];
+
+        $(portfolio_top).click(function (){
+            $("body,html").animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
 
     });
 }());

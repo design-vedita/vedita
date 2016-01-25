@@ -1,0 +1,151 @@
+/*-----------------------menu portfolio----------------------*/
+.menu-portfolio {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  transition: background .5s ease;
+  z-index: 8;
+  background-color: rgba(61, 53, 86, .95);
+
+  /*&:hover {
+    background-color: rgba(61, 53, 86, 1);
+    transition: background .5s ease;
+  }*/
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+
+  & > div:hover {
+    background-color: rgba(61, 53, 86, .8);
+  }
+
+  &__all-job {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 6%;
+    border-right: 1px  rgba(255, 255, 255, .17) solid;
+    background-color: rgba(61, 53, 86, .95);
+
+      &__wrapper {
+        width: 36px;
+        height: 36px;
+        padding-top: 20px;
+        margin: 0 auto;
+
+        &:after {
+          display: block;
+          content: '';
+          width: 100%;
+          clear: both;
+        }
+
+        &__circle {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #fff;
+          float: left;
+          margin-right: 5px;
+          margin-bottom: 5px;
+
+          &:nth-of-type(3n) {
+            margin-right: 0;
+          }
+        }
+      }
+
+    & a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  & .arrow {
+    width: 21px;
+    height: 35px;
+    fill: #fff;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & .links {
+    width: 44%;
+    color: #fff;
+    height: 70px;
+    float: left;
+    background-color: rgba(61, 53, 86, .95);
+    box-sizing: border-box;
+    line-height: 70px;
+
+    & a {
+      text-decoration: none;
+      color: transparent;
+    }
+  }
+
+  &__prev-job {
+    text-align: right;
+    padding-right: 5%;
+    box-sizing: border-box;
+
+    & .arrow {
+      transform: rotate(90deg);
+    }
+
+    & p {
+      .portfolio-links-p;
+      margin-right: 5%;
+    }
+  }
+
+  &__next-job {
+    text-align: left;
+    padding-left: 5%;
+    box-sizing: border-box;
+
+    & .arrow {
+      transform: rotate(-90deg);
+    }
+
+    & p {
+      .portfolio-links-p;
+      margin-left: 5%;
+    }
+  }
+
+  &__up-page {
+    float: left;
+    top: 24px;
+    cursor: pointer;
+    width: 5.8%;
+    text-align: center;
+    height: 70px;
+    border-left: 1px  rgba(255, 255, 255, .17) solid;
+    background-color: rgba(61, 53, 86, .95);
+
+    & .arrow-up {
+      margin-top: 24px;
+      width: 35px;
+      height: 20px;
+      fill: #fff;
+      transform: rotate(180deg);
+      transition: margin-top .5s ease;
+    }
+
+    &:hover .arrow-up {
+      margin-top: 15px;
+      fill: #9fc187;
+      transition: margin-top .5s ease, fill .5s ease;
+    }
+  }
+}
+
+/*-----------------------------------------------------------*/

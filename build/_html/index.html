@@ -101,7 +101,7 @@
         </div>
         <!-- Шапка сайта слайдер -->
         <div class="header-bottom">
-            <div class="header-bottom__slider swiper-container">
+            <div class="header-bottom__slider swiper-container js-slider">
                 <div class="header-bottom__slider__swiper-wrapper swiper-wrapper">
                     <div class="header-bottom__slider__swiper-wrapper__slide swiper-slide" style="background-image: url(../img/slide1.jpg)"></div>
                     <div class="header-bottom__slider__swiper-wrapper__slide swiper-slide" style="background-image: url(../img/slide2.jpg)"></div>
@@ -120,21 +120,100 @@
             <p class="content-h1">Наши основные услуги</p>
             <div class="content__index-services__wrapper">
                 <div class="content__index-services__wrapper__list">
-                    <p>dsalkfjsadlkfjlskdjflksjflkdjlk</p>
-                    <p>dsalkfjsadlkfjlskdjflksjflkdjlk</p>
-                    <p>dsalkfjsadlkfjlskdjflksjflkdjlk</p>
-                    <p>dsalkfjsadlkfjlskdjflksjflkdjlk</p>
-                    <p>dsalkfjsadlkfjlskdjflksjflkdjlk</p>
+                    <div class="content__index-services__wrapper__list__element">
+                        <div class="content__index-services__wrapper__list__element__circle">
+                            <img src="../img/ico-website-development.png" alt=""/>  
+                        </div>
+                        <p>Создание сайтов</p>
+                    </div>
+                    <div class="content__index-services__wrapper__list__element">
+                        <div class="content__index-services__wrapper__list__element__circle">
+                            <img src="../img/ico-support-sites.png" alt=""/>    
+                        </div>
+                        <p>Поддержка сайтов</p>
+                    </div>
+                    <div class="content__index-services__wrapper__list__element">
+                        <div class="content__index-services__wrapper__list__element__circle">
+                            <img src="../img/ico-seo.png" alt=""/>
+                        </div>
+                        <p>Поисковое продвижение</p>
+                    </div>
+                    <div class="content__index-services__wrapper__list__element">
+                        <div class="content__index-services__wrapper__list__element__circle">
+                            <img src="../img/ico-yandex-direct.png" alt=""/>
+                        </div>
+                        <p>Контекстная реклама</p>
+                    </div>
+                    <div class="content__index-services__wrapper__list__element">
+                        <div class="content__index-services__wrapper__list__element__circle">
+                            <img src="../img/ico-smm.png" alt=""/>
+                        </div>
+                        <p>SMM</p>
+                    </div>
                 </div>
                 <div class="content__index-services__wrapper__rectangle rectangle-services">
                     <a href="javascript:void(0)">
                         <p>Все услуги</p>
+                        <svg class="arrow">
+                            <use xlink:href="#arrow-menu" />
+                        </svg>
                     </a>
                 </div>
             </div>
         </section>
-
+        <section class="content__index-about-company">
+            <p class="content-h2">Мы работаем на рынке Интернет-технологий уже 10 лет!</p>
+            <div class="content__index-about-company__text">
+                <p><span>«VediTa» - это команда профессионалов</span> в  сфере интернет-технологий с 2006 года, за это время нами реализованы десятки успешных проектов и наработан значительный практический опыт.</p>
+                <p>Мы используем современные и профессиональные инструменты для разработки и продвижения. Богатый опыт позволяет нам <span>решать задачи практически любой сложности</span> в области веб-дизайна и интернет маркетинга.</p>
+                <p>Мы работаем как по четко определенному техническому заданию, так и над проектами, где задача сформулирована нечетко. В этом случае мы сами составляем, корректируем ТЗ на создание сайта или другие виды работ: продвижение сайта, редизайн сайта, поддержку и обновление сайта и т.д.</p>
+                <p>Нас отличает добросовестное отношение к работе и <span>приемлемые цены на все виды услуг</span>, что подтверждают многочисленные положительные отзывы наших клиентов.</p>
+            </div>
+        </section>
+        <section class="content__index-new-job">
+            <p class="content-h1">Наши новые работы</p>
+        </section>
     </div>
+
+     <div class="menu-portfolio">
+         <div class="menu-portfolio__all-job">
+             <a href="javascript:void(0)">
+                 <div class="menu-portfolio__all-job__wrapper">
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                     <div class="menu-portfolio__all-job__wrapper__circle"></div>
+                 </div>
+             </a>
+         </div>
+         <div class="menu-portfolio__prev-job links">
+             <a href="javascript:void(0)">
+                 <p>Название предыдущей работы</p>
+                 <svg class="arrow-prev arrow">
+                     <use xlink:href="#arrow-menu" />
+                 </svg>
+             </a>
+         </div>
+         <div class="menu-portfolio__next-job links">
+             <a href="javascript:void(0)">
+                 <svg class="arrow-next arrow">
+                     <use xlink:href="#arrow-menu" />
+                 </svg>
+                 <p>Название следующей работы</p>
+             </a>
+         </div>
+         <div class="menu-portfolio__up-page js-up-page">
+             <svg class="arrow-up">
+                 <use xlink:href="#arrow-menu" />
+             </svg>
+         </div>
+     </div>
+    <!--//= blocks/menu-landing.html -->
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>window.jQuery || document.write('<script src="../js/jquery-1.11.3.min.js"><\/script>')</script>

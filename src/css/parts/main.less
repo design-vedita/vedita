@@ -33,10 +33,12 @@ body {
 
 /*--------------------------default-----------------------*/
 .menu {
-  transform: translateY(-100vh);
+  transform: translateY(-1000px);
+  /*
+  * ¬ыставл€ем по-умолчанию, чтобы при загрузке страницы не видеть как меню убегает вверх
+  */
 }
 /*---------------------------------------------------------*/
-
 
 @media screen and (min-width:1000px)  {
 
@@ -50,9 +52,9 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 8;
-      transform: translateY(-100vh);
-      height: 100vh;
+      z-index: 9;
+    /*  transform: translateY(-100vh);*/
+    /*  height: 100vh;*/
       transition: transform .5s ease;
 
         & > div {
@@ -102,13 +104,13 @@ body {
                         }
 
                       &.number {
-                        font: 28px @condens_reg, sans-serif;
+                        font: 1.75em @condens_reg, sans-serif; /* 28/16 */
                         float: left;
 
                       }
 
                       &.mail {
-                        font: 18px @comfort, cursive;
+                        font: 1.125 @comfort, cursive; /* 18/16 */
                         float: right;
                         margin-top: 7px;
 
@@ -142,7 +144,7 @@ body {
           transition: opacity .5s ease;
 
             & > ul {
-              margin-top: 250px;
+              margin-top: 18.60119047619048%; /* 250/1344 */
               list-style-type: none;
               margin-left: 4.166666666666667%; /* 56/1344 */
 
@@ -283,7 +285,7 @@ body {
     }
 
     & .menu-show {
-      transform: translateY(0);
+      transform: translateY(0) !important;
       transition: transform .5s ease;
     }
 
@@ -538,7 +540,7 @@ body {
 
 
         &__slider {
-          height: calc(~'92vh - 63px');
+          /*height: calc(~'92vh - 63px');*/
 
             &__pagination {
               text-align: center;
@@ -615,7 +617,7 @@ body {
         }
     }
   }
-  /*------------------------------index content*/
+  /*----------------------------index content------------------------*/
   .content {
     margin-top: 63px;
 
@@ -624,7 +626,6 @@ body {
 
           &__wrapper{
             width: 100%;
-            height: 196px;
             position: relative;
 
               &__rectangle {
@@ -637,36 +638,128 @@ body {
                 right: 0;
                 top: 0;
 
+                  & a {
+                    display: block;
+                    height: 198px;
+                    margin-top: -98px;
+                    width: 111px;
+                  }
+
                   & p {
                     transform: rotate(-90deg);
                     font: 1.125em/1.4375 @condens_reg, sans-serif; /* 18px|23px */
                     text-transform: uppercase;
                     color: #fff;
-                    left: 10px;
+                    left: 19px;
                     top: -24px;
                     text-align: center;
                     width: 60px;
                     position: absolute;
+                    letter-spacing: 1.5px;
+                  }
+
+                  & .arrow {
+                    position: absolute;
+                    right: -111px;
+                    width: 33px;
+                    height: 33px;
+                    transform: rotate(-90deg);
+                    fill: #fff;
+                    top: -15px;
                   }
               }
 
               &__list {
-                width: 52.08333333333333%; /* 1000/1920 */
+                width: 67.70833333333333%; /* 1300/1920 */
                 margin: 0 auto;
+                padding-top: 55px;
+                text-align: justify;
+                line-height: 0;
+                font-size: 1px;
+
+                  &__element {
+                    width: 114px;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-bottom: 20px;
+                    line-height: normal;
+
+
+                    &:last-of-type {
+                        margin-right: 0;
+                      }
+
+                      &__circle {
+                        width: 90px;
+                        height: 90px;
+                        border-radius: 50%;
+                        border: 3px #9fc187 solid;
+                        text-align: center;
+                        margin: 0 auto;
+
+                        & img {
+                          max-width: 60%;
+                          padding-top: 20px;
+                        }
+                      }
+
+                      & p {
+                        font-size: 1.1875rem; /* 19/16 */
+                        font-family:  @condens_reg, sans-serif;
+                        margin-top: 31px;
+                        color: #3d3556;
+                        text-transform: uppercase;
+                        text-align: center;
+                      }
+                  }
+
+                  &:after {
+                    width: 100%;
+                    height: 0;
+                    visibility: hidden;
+                    overflow: hidden;
+                    content: '';
+                    display: inline-block;
+                  }
               }
 
-              &:after {
-                content: '';
-                width: 100%;
-                display: block;
-                clear: both;
+
+          }
+      }
+
+      &__index-about-company {
+        margin: 55px auto 0;
+        width: 90%;
+
+          &__text {
+            -moz-column-count: 2;
+            -moz-column-gap: 2em;
+            -webkit-column-count: 2;
+            -webkit-column-gap: 2em;
+            column-count: 2;
+            column-gap: 2em;
+            margin-top: 38px;
+
+              & p {
+                font: 1.125em @ubuntu; /* 18/16 */
+                line-height: 2;
+                margin-bottom: 1.5em;
+
+                 & span {
+                   font: 500 1.125em @ubuntu;
+                   color: #484848;
+                 }
               }
           }
       }
 
+      &__index-new-job {
+
+      }
+
       & .content-h1 {
         text-transform: uppercase;
-        font: 42px @ubuntu, sans-serif;
+        font: 2.625em @ubuntu, sans-serif; /* 42/16 */
         color: #3d3556;
         text-align: center;
         position: relative;
@@ -681,6 +774,26 @@ body {
             margin-left: -109px;
             height: 1px;
             background-color: #9fc187;
+            bottom: 0;
+
+          }
+      }
+
+      & .content-h2 {
+        text-transform: uppercase;
+        font: 1.875em @ubuntu, sans-serif; /* 30/16 */
+        color: #3d3556;
+        position: relative;
+        padding-bottom: 30px;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 218px;
+            height: 1px;
+            background-color: #d35414;
             bottom: 0;
 
           }

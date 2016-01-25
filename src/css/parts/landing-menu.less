@@ -1,0 +1,55 @@
+.menu-landing {
+  width: 100%;
+  height: 70px;
+  background-color: rgba(61, 53, 86, .95);
+  position: fixed;
+  bottom: 0;
+  transition: background .5s ease;
+  z-index: 8;
+
+    &:hover {
+      background-color: rgba(61, 53, 86, 1);
+      transition: background .5s ease;
+    }
+
+    & ul {
+      margin-left: 2.083333333333333%; /* 40/1920 */
+      line-height: 0;
+      font-size: 1px;
+
+        & li {
+          display: inline-block;
+          vertical-align: middle;
+          height: 70px;
+          line-height: normal;
+          border-right: 1px rgba(255, 255, 255, .17) solid;
+          line-height: normal;
+
+
+            &:last-of-type {
+              border-right: none;
+            }
+
+            & a {
+              color: #fff;
+              text-decoration: none;
+              font: 13px @ubuntu, sans-serif;
+              text-transform: uppercase;
+              display: block;
+              line-height: 70px;
+              padding: 0 10%;
+              transition: color .5s ease;
+
+                &.active {
+                  color: #9fc187;
+                }
+
+                &:hover {
+                  color: #9fc187;
+                  transition: color .5s ease;
+                }
+            }
+        }
+
+    }
+}
