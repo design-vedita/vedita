@@ -248,6 +248,7 @@ body {
                   &:hover > a {
                     color: #9fc187;
                     transition: color .5s ease;
+                    will-change: color;
                   }
 
                   & ul.submenu {
@@ -515,22 +516,27 @@ body {
 
       &:hover:after {
         animation: border .3s ease forwards;
+        will-change: animation;
       }
 
       &:hover:before {
         animation: border-left .3s ease .3s forwards;
+        will-change: animation;
       }
 
       &:hover .top-animate {
         animation: border-top .3s ease .6s forwards;
+        will-change: animation;
       }
 
       &:hover .right-animate {
         animation: border-right .3s ease .9s forwards;
+        will-change: animation;
       }
 
       &:hover .bottom-animate {
         animation: border-bottom .3s ease 1.2s forwards;
+        will-change: animation;
       }
     }
 
@@ -544,7 +550,7 @@ body {
 
             &__pagination {
               text-align: center;
-              top: 10% !important;
+              top: 20% !important;
               right: 2.395833333333333% !important; /* 46/1920 */
 
                 & .swiper-pagination-bullet {
@@ -613,6 +619,14 @@ body {
               position: absolute;
               top: -62px;
               width: 35px;
+              transition: top .5s ease, fill .5s ease;
+            }
+
+            &:hover .arrow {
+              top: -55px;
+              fill: #9fc187;
+              transition: top .5s ease, fill .5s ease;
+              will-change: top, fill;
             }
         }
     }
@@ -637,6 +651,7 @@ body {
                 position: absolute;
                 right: 0;
                 top: 0;
+                transition: border .5s ease;
 
                   & a {
                     display: block;
@@ -647,11 +662,11 @@ body {
 
                   & p {
                     transform: rotate(-90deg);
-                    font: 1.125em/1.4375 @condens_reg, sans-serif; /* 18px|23px */
+                    font: 1.125em/1.2em @condens_reg, sans-serif; /* 18px|23px */
                     text-transform: uppercase;
                     color: #fff;
-                    left: 19px;
-                    top: -24px;
+                    left: 17px;
+                    top: -21px;
                     text-align: center;
                     width: 60px;
                     position: absolute;
@@ -660,12 +675,26 @@ body {
 
                   & .arrow {
                     position: absolute;
-                    right: -111px;
+                    right: -105px;
                     width: 33px;
                     height: 33px;
                     transform: rotate(-90deg);
                     fill: #fff;
-                    top: -15px;
+                    top: -17px;
+                    transition: width .5s ease, right .5s ease, height .5s ease;
+                  }
+
+                  &:hover {
+                    border-right-color: #d35414;
+                    transition: border .5s ease;
+                    will-change: border;
+                  }
+
+                  &:hover .arrow {
+                    width: 37px;
+                    height: 37px;
+                    transition: width .5s ease, right .5s ease, height .5s ease;
+                    will-change: width, right, height;
                   }
               }
 
@@ -754,7 +783,68 @@ body {
       }
 
       &__index-new-job {
+        position: relative;
+        margin-top: 55px;
 
+          &__wrapper-job {
+            height: 300px;
+          }
+
+          &__rectangle {
+            width: 0;
+            height: 0;
+            border-top: 100px solid transparent;
+            border-right: 111px solid #3d3556;
+            border-bottom: 100px solid transparent;
+            position: absolute;
+            right: 0;
+            top: -73px;
+            transition: border .5s ease;
+
+            & a {
+              display: block;
+              height: 198px;
+              margin-top: -98px;
+              width: 111px;
+            }
+
+            & p {
+              transform: rotate(-90deg);
+              font: 1.125em/1.2em @condens_reg, sans-serif; /* 18px|23px */
+              text-transform: uppercase;
+              color: #fff;
+              left: 19px;
+              top: -20px;
+              text-align: center;
+              width: 60px;
+              position: absolute;
+              letter-spacing: 1.5px;
+            }
+
+            & .arrow {
+              position: absolute;
+              right: -105px;
+              width: 33px;
+              height: 33px;
+              transform: rotate(-90deg);
+              fill: #fff;
+              top: -15px;
+              transition: width .5s ease, height .5s ease;
+            }
+
+            &:hover {
+              border-right-color: #d35414;
+              transition: border .5s ease;
+              will-change: border;
+            }
+
+            &:hover .arrow {
+              width: 37px;
+              height: 37px;
+              transition: width .5s ease, height .5s ease;
+              will-change: width, height;
+            }
+          }
       }
 
       & .content-h1 {

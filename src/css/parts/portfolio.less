@@ -6,7 +6,7 @@
   bottom: 0;
   transition: background .5s ease;
   z-index: 8;
-  background-color: rgba(61, 53, 86, .95);
+  background-color: rgb(61, 53, 86);
 
   /*&:hover {
     background-color: rgba(61, 53, 86, 1);
@@ -21,16 +21,20 @@
   }
 
   & > div:hover {
-    background-color: rgba(61, 53, 86, .8);
+    background-color: #2e2841;
+    transition: background .5s linear;
+    will-change: background;
   }
 
   &__all-job {
     position: relative;
     float: left;
     height: 100%;
-    width: 6%;
+    width: 114px;
     border-right: 1px  rgba(255, 255, 255, .17) solid;
     background-color: rgba(61, 53, 86, .95);
+    box-sizing: border-box;
+    transition: background .5s linear;
 
       &__wrapper {
         width: 36px;
@@ -69,7 +73,7 @@
   }
 
   & .arrow {
-    width: 21px;
+    width: 35px;
     height: 35px;
     fill: #fff;
     display: inline-block;
@@ -84,10 +88,14 @@
     background-color: rgba(61, 53, 86, .95);
     box-sizing: border-box;
     line-height: 70px;
+    transition: background .5s linear;
 
     & a {
       text-decoration: none;
       color: transparent;
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -95,6 +103,7 @@
     text-align: right;
     padding-right: 5%;
     box-sizing: border-box;
+    transition: right .5s ease;
 
     & .arrow {
       transform: rotate(90deg);
@@ -122,28 +131,32 @@
   }
 
   &__up-page {
-    float: left;
-    top: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
     cursor: pointer;
-    width: 5.8%;
+    width: 114px;
     text-align: center;
     height: 70px;
     border-left: 1px  rgba(255, 255, 255, .17) solid;
     background-color: rgba(61, 53, 86, .95);
+    box-sizing: border-box;
+    transition: background .5s linear;
 
     & .arrow-up {
       margin-top: 24px;
       width: 35px;
-      height: 20px;
+      height: 35px;
       fill: #fff;
       transform: rotate(180deg);
-      transition: margin-top .5s ease;
+      transition: margin-top .5s ease, fill .5s ease;
     }
 
     &:hover .arrow-up {
-      margin-top: 15px;
+      margin-top: 17px;
       fill: #9fc187;
       transition: margin-top .5s ease, fill .5s ease;
+      will-change: margin-top, fill;
     }
   }
 }
