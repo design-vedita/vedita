@@ -3,6 +3,7 @@
 
     $(function(){
 
+
         /*-----------------preloader--------------------*/
         $(window).on('load', function () {
             var $preloader = $('.page-preloader'),
@@ -48,15 +49,23 @@
         });
 
         /*--------------click on bird in hide-menu----------*/
+
         $('.js-arrow-menu').on('click', function(){
             var $parent = $(this).parent(),
                 $menu_hide = $('.js-hide-menu li');
 
-                $($menu_hide).each(function(){
-                    $(this).removeClass('show-before');
-                });
+            // We close everything except this
+            $($menu_hide).each(function(){
+                $(this).removeClass('show-before');
+            });
 
-                $parent.addClass('show-before');
+            $parent.addClass('show-before');
+        });
+            // close this menu item
+        $('.js-close').click(function(){
+            var $parent = $(this).parent();
+            $parent.removeClass('show-before');
+
         });
 
         /*-----------------slider rectangle click---------------*/
