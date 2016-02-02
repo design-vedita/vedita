@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
-    inject = require('gulp-inject');
+    inject = require('gulp-inject'),
+    spritesmith = require('gulp.spritesmith');
 
 var path = {
     build: {
@@ -26,7 +27,8 @@ var path = {
         html: 'src/templates/*.html',
         js: 'src/js/script.js',
         style: 'src/css/style.less',
-        img: 'src/img/**/*.*',
+        img: 'src/img/*.*',
+        sprite: 'src/img/ico/*.*',
         fonts: 'src/fonts/**/*.*',
         svg: 'src/img/svg/*.svg',
         svg_html: 'src/templates/svg_template/svg.html',
@@ -38,7 +40,8 @@ var path = {
         style: 'src/css/**/*.less',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*',
-        svg: 'src/img/svg/*.svg'
+        svg: 'src/img/svg/*.svg',
+        sprite: 'src/img/ico/*.*'
     }
 };
 
@@ -60,6 +63,26 @@ var config = {
     logSnippet: false,
     logPrefix: "nikalun"
 };
+
+
+gulp.task('sprite', function() {
+    var spriteData =
+        gulp.src(path.src.sprite)
+            .pipe(spritesmith({
+                imgName: 'sprite.png',
+                imgPath: '../img/sprite/sprite.png',
+                cssName: 'sprite.less',
+                cssFormat: 'less',
+                algorithm: 'binary-tree',
+                cssVarMap: function(sprite) {
+                    sprite.name = sprite.name
+                }
+            }));
+
+    spriteData.img.pipe(gulp.dest('./build/img/sprite'));
+    spriteData.css.pipe(gulp.dest('./src/css/parts')); // путь, куда сохраняем стили
+});
+
 
 gulp.task('svgstore', function () {
     var svgs = gulp
@@ -146,7 +169,10 @@ gulp.task('watch', function(){
     watch([path.watch.svg], function(event, cb) {
         gulp.start('svgstore');
     });
+    watch([path.watch.sprite], function(event, cb) {
+        gulp.start('sprite');
+    });
 });
 
 
-gulp.task('default', ['svgstore', 'build', 'webserver', 'watch']);
+gulp.task('default', ['svgstore', 'build', 'webserver', 'watch', 'sprite']);
