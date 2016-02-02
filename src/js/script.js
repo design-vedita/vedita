@@ -3,6 +3,9 @@
 
     $(function(){
 
+        var hs = document.getElementsByClassName('submenu');
+
+            hs.forEach()
 
         /*-----------------preloader--------------------*/
         $(window).on('load', function () {
