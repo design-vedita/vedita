@@ -23,11 +23,10 @@
             var menu_right = document.getElementsByClassName('js-menu-right')[0],
                 menu_left = document.getElementsByClassName('js-menu-left')[0];
 
-                console.log(max);
                 console.log(client_height);
 
             if (client_height < max) {
-                menu_right.style.cssText = 'height: '+ max + 'px';
+                menu_right.style.cssText = 'height: '+ client_height + 'px';
                 menu.style.cssText = 'height: '+ client_height + 'px';
 
                 /**
