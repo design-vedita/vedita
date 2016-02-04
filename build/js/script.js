@@ -20,11 +20,14 @@
 
         /*-------------------------------------------height open menu-----------------------------------------------*/
         function setClient(max, menu, client_height, client_width) {
-            var menu_right = document.getElementsByClassName('menu__right')[0],
-                menu_left = document.getElementsByClassName('menu__left')[0];
+            var menu_right = document.getElementsByClassName('js-menu-right')[0],
+                menu_left = document.getElementsByClassName('js-menu-left')[0];
 
-            if (client_height > max) {
-                menu_right.style.cssText = 'height: '+ client_height + 'px';
+                console.log(max);
+                console.log(client_height);
+
+            if (client_height < max) {
+                menu_right.style.cssText = 'height: '+ max + 'px';
                 menu.style.cssText = 'height: '+ client_height + 'px';
 
                 /**
@@ -47,7 +50,12 @@
                  * Otherwise, the right is the maximum altitude, and the menu itself to the client (tightens up the screen size)
                  */
 
-                (client_width > 1000) ?  menu_left.style.cssText = 'height: '+ max + 'px; \ top: 0' : menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: ' + max +'px';
+                 if (client_width > 1000) {
+                     menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: 0';
+                     menu_right.style.cssText = 'height: '+ client_height + 'px';
+                 } else {
+                     menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: ' + max +'px';
+                 }
                 /**
                  * � ������� ������� ������ ����� ���� ������� �� ������������� submenu, ����� �� ������ �������
                  * Larger screens make the left block of the maximum height submenu, otherwise the height of the client
@@ -114,7 +122,7 @@
 
         /*-------------------------------------visible menu--------------------------------------*/
 
-        function setSizeHideContent(content) {
+        function setSizeHideContent(content, footer) {
             var content_height = content.offsetHeight, //get height content
                 footer_height = footer.offsetHeight; //get height footer
 
@@ -136,9 +144,9 @@
                 menu.classList.toggle('menu-show'),
                 hide_block = document.getElementsByClassName('js-hide-block')[0];
 
-                hide_block.style.zIndex = '7';  
+                hide_block.style.zIndex = '7';
 
-                setSizeHideContent(content);
+                setSizeHideContent(content, footer);
             }
         /*---------------------------------------------------------------------------------------*/
 
@@ -165,6 +173,7 @@
         setClient(max, menu, client_height, client_width);
         slider_size();
         hideShowPercentBlock(client_width);
+        setSizeHideContent(content, footer);
 
         window.onresize = function() {
             var client_height = document.documentElement.clientHeight,
@@ -173,7 +182,7 @@
 
                 slider_size();
                 setClient(max, menu, client_height, client_width);
-                setSizeHideContent(content);
+                setSizeHideContent(content, footer);
                 hideShowPercentBlock(client_width);
         }
 
