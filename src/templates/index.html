@@ -5,9 +5,9 @@
     //= blocks/svg.html
 
     <header>
-        <div class="menu js-menu">
+        <div class="menu js-menu" id="menu">
             <!-- Левая часть меню -->
-            <div class="menu__left">
+            <div class="menu__left js-menu-left">
                 <div class="menu__left__logo">
                     <img src="../img/logo.png" alt=""/>
                 </div>
@@ -30,7 +30,7 @@
             </div>
 
             <!-- Правая часть меню -->
-            <div class="menu__right">
+            <div class="menu__right js-menu-right">
                 <ul class="js-hide-menu">
                     <li>
                         <a class="active" href="javascript:undefined">О нас</a>
@@ -55,6 +55,12 @@
                         <ul class="submenu">
                             <li><a href="javascript:undefined">Создание сайтов</a></li>
                             <li><a href="javascript:undefined">Продвижение сайтов</a></li>
+                            <li><a href="javascript:undefined">Создание сайтов</a></li>
+                            <li><a href="javascript:undefined">Продвижение сайтов</a></li>
+                            <li><a href="javascript:undefined">Создание сайтов</a></li>
+                            <li><a href="javascript:undefined">Продвижение сайтов</a></li>
+                            <li><a href="javascript:undefined">Создание сайтов</a></li>
+                            <li><a href="javascript:undefined">Продвижение сайтов</a></li>
                         </ul>
                     </li>
                     <li><a href="javascript:undefined">Портфолио</a></li>
@@ -66,6 +72,16 @@
                         <div class="js-close"></div>
                         <ul class="submenu">
                             <li><a class="active" href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">Семинары 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">перевод сайтов на битрикс</a></li>
+                            <li><a href="javascript:undefined">Семинары 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">перевод сайтов на битрикс</a></li>
+                            <li><a class="active" href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">Семинары 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
+                            <li><a href="javascript:undefined">перевод сайтов на битрикс</a></li>
                             <li><a href="javascript:undefined">Семинары 1С-Битрикс</a></li>
                             <li><a href="javascript:undefined">Партнёр 1С-Битрикс</a></li>
                             <li><a href="javascript:undefined">перевод сайтов на битрикс</a></li>
@@ -113,7 +129,11 @@
             </div>
         </div>
     </header>
-    <div class="content">
+    <div class="content" id="content">
+        <div class="content__hide-block js-hide-block">
+            <div class="left-percent percent"></div>
+            <div class="right-percent percent"></div>
+        </div>
         <section class="content__index-services">
             <p class="content-h1">Наши основные услуги</p>
             <div class="content__index-services__wrapper">
@@ -184,6 +204,7 @@
             </div>
         </section>
     </div>
+    <footer id="footer"></footer>
 
     <!-- //= blocks/menu-portfolio.html -->
     <!-- //= blocks/menu-landing.html -->

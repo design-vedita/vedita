@@ -33,7 +33,7 @@ body {
 
 /*--------------------------default-----------------------*/
 .menu {
-  transform: translateY(-1000px);
+  transform: translateY(-2000px);
   /*
   * ¬ыставл€ем по-умолчанию, чтобы при загрузке страницы не видеть как меню убегает вверх
   */
@@ -51,8 +51,6 @@ header {
     top: 0;
     left: 0;
     z-index: 9;
-  /*  transform: translateY(-100vh);*/
-  /*  height: 100vh;*/
     transition: transform .5s ease;
 
       & > div {
@@ -70,11 +68,19 @@ header {
         width: 30%;
         background-color: #fff;
         left: 0;
-        z-index: 8;
+        z-index: 10;
         height: 100%;
         transition: opacity .5s ease;
         position: relative;
         box-sizing: border-box;
+
+          &__hide {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            position: fixed;
+            z-index: -1;
+          }
 
           &__logo {
             width: auto;
@@ -163,12 +169,20 @@ header {
 
       &__right {
         width: 70%;
-        background-color: fade(#3d3556, 99%);
+        background-color: #3d3556;
         right: 0;
-        z-index: 8;
+        z-index: 10;
         height: 100%;
         transition: opacity .5s ease;
         box-sizing: border-box;
+
+          &__hide {
+            width: 70%;
+            height: 100%;
+            background-color: #3d3556;
+            position: fixed;
+            z-index: -1;
+          }
 
           & > ul {
             margin-top: 18.60119047619048%; /* 250/1344 */
@@ -598,10 +612,7 @@ header {
   .header-bottom {
       position: relative;
 
-
-
       &__slider {
-        /*height: calc(~'92vh - 63px');*/
 
           &__pagination {
             text-align: center;
@@ -687,8 +698,33 @@ header {
   }
 }
 /*----------------------------index content------------------------*/
+.js-hide-block {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1; /*7*/
+}
 .content {
   margin-top: 63px;
+  position: relative;
+
+    &.menu--open {
+
+      & .left-percent {
+        width: 30%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+      }
+
+      & .right-percent {
+        width: 70%;
+        height: 100%;
+        background-color: #3d3556;
+        position: absolute;
+      }
+    }
 
     &__index-services {
       padding-top: 35px;
@@ -1014,8 +1050,7 @@ header {
       & .menu {
 
           &__left {
-            bottom: 0;
-            height: 44%; /*442px*/
+            height: 46%; /*442px*/
             width: 100%;
 
               &__logo {
@@ -1074,7 +1109,7 @@ header {
 
           &__right {
             left: 0;
-            height: 56%; /*557px*/
+            height: 54%; /*557px*/
             width: 100%;
 
               & > ul {
@@ -1177,8 +1212,7 @@ header {
     & .menu {
 
       &__left {
-        bottom: 0;
-        height: 44%; /*442px*/
+        height: 60%; /*442px*/
         width: 100%;
 
         &__logo {
