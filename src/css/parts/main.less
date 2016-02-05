@@ -1450,9 +1450,11 @@ header {
                 }
               }
 
-              & .submenu {
+              &.show-before .submenu {
                 position: static !important;
-                height: 0;
+              }
+
+              & .submenu {
                 padding-bottom: 5px !important;
 
                 & li {
@@ -1466,7 +1468,6 @@ header {
               &.show-before {
 
                   & .submenu {
-                    height: 100%;
                     margin-top: 33px;
                   }
 

@@ -23,10 +23,12 @@
             var menu_right = document.getElementsByClassName('js-menu-right')[0],
                 menu_left = document.getElementsByClassName('js-menu-left')[0];
 
-                console.log(client_height);
+                console.log('client -' + client_height);
+                console.log('max - ' + max);
+                console.log('---------------------------');
 
             if (client_height < max) {
-                menu_right.style.cssText = 'height: '+ client_height + 'px';
+                menu_right.style.cssText = 'height: '+ max + 'px';
                 menu.style.cssText = 'height: '+ client_height + 'px';
 
                 /**
@@ -50,8 +52,8 @@
                  */
 
                  if (client_width > 1000) {
-                     menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: 0';
-                     menu_right.style.cssText = 'height: '+ client_height + 'px';
+                     menu_left.style.cssText = 'height: ' + client_height + 'px; \ top: 0';
+                     menu_right.style.cssText = 'height: ' + client_height + 'px';
                  } else {
                      menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: ' + max +'px';
                  }
