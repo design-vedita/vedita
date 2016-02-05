@@ -10,6 +10,23 @@
             footer = document.getElementById('footer'),
             hide_block = document.getElementsByClassName('js-hide-block')[0];
 
+        /*--------------------------------------slider index--------------------------------------*/
+
+        function slider_size() {
+            var client_height = document.documentElement.clientHeight,
+                slider = document.getElementsByClassName('js-slider')[0];
+
+            slider.style.height = (client_height - 137) + 'px';
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            direction: 'vertical'
+        });
+
+        /*---------------------------------------------------------------------------------------*/
+
        /*-----------------preloader--------------------*/
         $(window).on('load', function () {
             var $preloader = $('.page-preloader'),
@@ -22,10 +39,6 @@
         function setClient(max, menu, client_height, client_width) {
             var menu_right = document.getElementsByClassName('js-menu-right')[0],
                 menu_left = document.getElementsByClassName('js-menu-left')[0];
-
-                console.log('client -' + client_height);
-                console.log('max - ' + max);
-                console.log('---------------------------');
 
             if (client_height < max) {
                 menu_right.style.cssText = 'height: '+ max + 'px';
@@ -104,22 +117,6 @@
 
         /*----------------------------------------------------------------------------------------*/
 
-        /*--------------------------------------slider index--------------------------------------*/
-
-        function slider_size() {
-            var client_height = document.documentElement.clientHeight,
-                slider = document.getElementsByClassName('js-slider')[0];
-
-                slider.style.height = (client_height - 137) + 'px';
-        }
-
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            direction: 'vertical'
-        });
-
-        /*---------------------------------------------------------------------------------------*/
 
         /*-------------------------------------visible menu--------------------------------------*/
 
