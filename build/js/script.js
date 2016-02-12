@@ -144,6 +144,10 @@
 
                 hide_block.style.zIndex = '7';
 
+                if(!burger.classList.contains('menu--open')) {
+                    hide_block.style.zIndex = '-1';
+                }
+
                 setSizeHideContent(content, footer);
             }
         /*---------------------------------------------------------------------------------------*/
@@ -165,6 +169,22 @@
         }
 
         /*-----------------------------------------------------------------------------------*/
+
+        /**/
+            function floatingMenu() {
+                var scrolled = window.pageYOffset || document.documentElement.scrollTop,
+                    header = document.getElementsByClassName('header-top')[0],
+                    header_height = header.offsetHeight;
+
+                    if ( scrolled >= header_height ) {
+                        header.classList.add('float-menu');
+                    } else {
+                        header.classList.remove('float-menu');
+                    }
+
+
+            }
+        /**/
 -
         /*--------------------------------------function call--------------------------------*/
 
@@ -172,6 +192,15 @@
         slider_size();
         hideShowPercentBlock(client_width);
         setSizeHideContent(content, footer);
+
+        window.onload = function(){
+
+            floatingMenu();
+
+            window.onscroll = function() {
+                floatingMenu();
+            }
+        }
 
         window.onresize = function() {
             var client_height = document.documentElement.clientHeight,
@@ -183,6 +212,10 @@
                 setSizeHideContent(content, footer);
                 hideShowPercentBlock(client_width);
         }
+
+
+
+
 
         /*----------------------------------------------------------------------------------*/
 

@@ -362,6 +362,13 @@ header {
     width: 100%;
     position: relative;
     height: 74px;
+    background-color: #fff;
+
+    &.float-menu {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+    }
 
       &:after {
         display: table;
@@ -733,6 +740,8 @@ header {
         &__wrapper{
           width: 100%;
           position: relative;
+          padding: 0 40px;
+          box-sizing: border-box;
 
             &__rectangle {
               width: 0;
@@ -791,12 +800,13 @@ header {
             }
 
             &__list {
-              width: 67.70833333333333%; /* 1300/1920 */
+              max-width: 1300px; /* 1300/1920 */
               margin: 0 auto;
-              padding-top: 55px;
               text-align: justify;
               line-height: 0;
               font-size: 1px;
+              padding-top: 55px;
+              box-sizing: border-box;
 
                 &__element {
                   width: 114px;
@@ -849,8 +859,11 @@ header {
     }
 
     &__index-about-company {
-      margin: 55px auto 0;
-      width: 90%;
+      margin: 274px auto 0;
+      width: 100%;
+      background-color: #f9f9f7;
+      padding: 0 40px;
+      box-sizing: border-box;
 
         &__text {
           -moz-column-count: 2;
@@ -876,10 +889,97 @@ header {
 
     &__index-new-job {
       position: relative;
-      margin-top: 55px;
+      margin-top: 226px;
 
         &__wrapper-job {
-          height: 300px;
+          max-width: 1179px;
+          margin: 40px auto 0;
+          font-size: 0;
+          padding: 0 40px;
+          box-sizing: border-box;
+
+            &__list {
+              width: 22.90076335877863%; /* 270/1179 */
+              display: inline-block;
+              vertical-align: top;
+              margin-right: 2.544529262086514%; /* 30/1179 */
+              margin-bottom: 30px;
+              box-sizing: border-box;
+
+                & a {
+                  text-decoration: none;
+                }
+
+                &:hover &__wrap-img__img {
+                  transform: scale(1.1);
+                  transition: transform .5s ease;
+                }
+
+                &:first-of-type, &:last-of-type {
+                  width: 48.34605597964377%; /* 570/1179 */
+                }
+
+                &:nth-of-type(3), &:last-of-type {
+                  margin-right: 0;
+                }
+
+                &:hover &__wrap-img:before {
+                  opacity: 1;
+                  visibility: visible;
+                  transition: opacity .5s ease;
+                }
+
+                &__wrap-img {
+                  width: 100%;
+                  overflow: hidden;
+                  position: relative;
+                  height: 320px;
+
+                  &:before {
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    visibility: hidden;
+                    background-color: rgba(16, 16, 16, .5);
+                    z-index: 1;
+                    content: '';
+                    transition: opacity .5s ease;
+                  }
+
+                  &__img {
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                    transform: scale(1);
+                    transition: transform .5s ease;
+                  }
+                }
+
+
+
+                & .index-job-title {
+                  font: 16px/27px @condens_reg,sans-serif;
+                  color: #3d3556;
+                  text-transform: uppercase;
+                  text-align: center;
+                  margin-top: 10px;
+                  letter-spacing: 1px;
+                }
+
+                & .type-job-title {
+                  font: 14px/19px @ubuntu, sans-serif;
+                  text-align: center;
+                  color: #999;
+                  letter-spacing: .7px;
+                }
+            }
+
         }
 
         &__rectangle {
@@ -981,7 +1081,10 @@ header {
         }
     }
 }
-
+footer {
+  height: 300px;
+  margin-top: 30px;
+}
 @media screen and (min-width: 1000px) and (max-width: 1671px) {
   header {
 
@@ -1051,7 +1154,6 @@ header {
       & .menu {
 
           &__left {
-           /* height: 46%; /*442px*/
             width: 100%;
 
               &__logo {
@@ -1179,6 +1281,168 @@ header {
       }
 
   }
+  .content {
+
+    &__index-new-job {
+
+      &__wrapper-job {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+      }
+
+      &__rectangle {
+        position: static;
+        border: 0;
+        width: 100%;
+        min-height: 30px;
+        height: 100%;
+        margin-top: 46px;
+        transition: border .5s ease;
+
+          & a {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            display: inline;
+            text-decoration: none;
+          }
+
+          & p {
+            transform: rotate(0);
+            position: relative;
+            width: auto;
+            text-align: center;
+            color: #d35414;
+            top: 0;
+            left: 0;
+            padding-bottom: 15px;
+            transition: color .5s ease;
+
+            &:before {
+              content: '';
+              display: block;
+              width: 67px;
+              height: 1px;
+              background-color: #d35414;
+              transition: background .5s ease;
+              position: absolute;
+              left: calc(~'50% - 33px');
+              bottom: 0;
+            }
+          }
+
+          & .arrow {
+            display: none;
+          }
+      }
+    }
+
+    &__index-services {
+
+        &__wrapper {
+          padding: 0 20px;
+
+            &__rectangle {
+              position: static;
+              border: 0;
+              width: 100%;
+              min-height: 30px;
+              height: 100%;
+              margin-top: 66px;
+              transition: border .5s ease;
+
+                & a {
+                  margin: 0;
+                  padding: 0;
+                  width: auto;
+                  height: auto;
+                  display: inline;
+                  text-decoration: none;
+                }
+
+                & p {
+                  transform: rotate(0);
+                  position: relative;
+                  width: auto;
+                  text-align: center;
+                  color: #d35414;
+                  transition: color .5s ease;
+                  top: 0;
+                  left: 0;
+                  padding-bottom: 15px;
+
+                  &:before {
+                    content: '';
+                    display: block;
+                    width: 67px;
+                    height: 1px;
+                    background-color: #d35414;
+                    transition: background .5s ease;
+                    position: absolute;
+                    left: calc(~'50% - 33px');
+                    bottom: 0;
+                  }
+                }
+
+              & .arrow {
+                display: none;
+              }
+            }
+        }
+    }
+
+    &__index-about-company {
+      padding: 55px 20px 0 20px;
+    }
+
+  }
+}
+@media screen and (min-width: 560px) and (max-width: 767px) {
+  .content {
+
+      & .content-h1 {
+        font-size: 2.25em; /* 36px */
+      }
+
+      &__index-new-job {
+
+          &__wrapper-job {
+            padding: 0 20px;
+            box-sizing: border-box;
+            width: 100%;
+
+              &__list {
+                  width: 48% !important;
+                  margin-right: 3.571428571428571%; /* 20/560 */
+
+                  &:nth-of-type(3n), &:last-of-type {
+                    margin-right: 3.571428571428571%;
+                  }
+
+                  &:nth-of-type(2n) {
+                    margin-right: 0;
+                  }
+
+                  &:first-of-type, &:last-of-type {
+
+                      & .wrap-img {
+                        height: 140px !important;
+                      }
+                  }
+
+                &:nth-of-type(3), &:nth-of-type(5) {
+                  margin-top: -180px;
+                }
+              }
+          }
+      }
+
+      &__index-about-company {
+        padding: padding: 55px 20px 0 20px;
+      }
+  }
 }
 @media screen and (min-width: 460px) and (max-width: 767px) {
   header {
@@ -1305,8 +1569,170 @@ header {
     }
 
   }
+  .content {
+
+    &__index-new-job {
+
+      &__wrapper-job {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+      }
+
+      &__rectangle {
+        position: static;
+        border: 0;
+        width: 100%;
+        min-height: 30px;
+        height: 100%;
+        margin-top: 46px;
+        transition: border .5s ease;
+
+        & a {
+          margin: 0;
+          padding: 0;
+          width: auto;
+          height: auto;
+          display: inline;
+          text-decoration: none;
+        }
+
+        & p {
+          transform: rotate(0);
+          position: relative;
+          width: auto;
+          text-align: center;
+          color: #d35414;
+          top: 0;
+          left: 0;
+          padding-bottom: 15px;
+          transition: color .5s ease;
+
+          &:before {
+            content: '';
+            display: block;
+            width: 67px;
+            height: 1px;
+            background-color: #d35414;
+            transition: background .5s ease;
+            position: absolute;
+            left: calc(~'50% - 33px');
+            bottom: 0;
+          }
+        }
+
+        & .arrow {
+          display: none;
+        }
+      }
+    }
+
+    &__index-services {
+
+      &__wrapper {
+        padding: 0 20px;
+
+        &__rectangle {
+          position: static;
+          border: 0;
+          width: 100%;
+          min-height: 30px;
+          height: 100%;
+          margin-top: 66px;
+          transition: border .5s ease;
+
+          & a {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            display: inline;
+            text-decoration: none;
+          }
+
+          & p {
+            transform: rotate(0);
+            position: relative;
+            width: auto;
+            text-align: center;
+            color: #d35414;
+            transition: color .5s ease;
+            top: 0;
+            left: 0;
+            padding-bottom: 15px;
+
+            &:before {
+              content: '';
+              display: block;
+              width: 67px;
+              height: 1px;
+              background-color: #d35414;
+              transition: background .5s ease;
+              position: absolute;
+              left: calc(~'50% - 33px');
+              bottom: 0;
+            }
+          }
+
+          & .arrow {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &__index-about-company {
+      padding: 55px 20px 0 20px;
+    }
+  }
 }
 
+@media screen and (min-width: 240px) and (max-width: 559px) {
+  .content {
+
+    & .content-h1 {
+      font-size: 1.625em; /* 26px */
+    }
+
+    &__index-new-job {
+
+      &__wrapper-job {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 100%;
+
+        &__list {
+          width: 100% !important;
+          display: block;
+
+            & .index-job-title {
+              font-size: 15px;
+            }
+
+            & .type-job-title {
+              font-size: 13px;
+            }
+
+            &__wrap-img {
+              height: 236px;
+            }
+
+            &:first-of-type, &:last-of-type {
+
+                & .wrap-img {
+                  height: 112px;
+                }
+            }
+
+            &:nth-of-type(3), &:nth-of-type(5) {
+              margin-top: 0;
+            }
+
+        }
+      }
+    }
+  }
+}
 @media screen and (min-width: 240px) and (max-width: 459px) {
   header {
 
@@ -1501,6 +1927,7 @@ header {
   .content {
 
       &__index-about-company {
+          padding:  20px 0 20px;
 
           &__text {
             column-count: 1 !important;
@@ -1514,12 +1941,124 @@ header {
           }
       }
 
+      &__index-new-job {
+
+        &__wrapper-job {
+          padding: 0 20px;
+          box-sizing: border-box;
+          width: 100%;
+        }
+
+        &__rectangle {
+          position: static;
+          border: 0;
+          width: 100%;
+          min-height: 30px;
+          height: 100%;
+          margin-top: 46px;
+          transition: border .5s ease;
+
+          & a {
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            display: inline;
+            text-decoration: none;
+          }
+
+          & p {
+            transform: rotate(0);
+            position: relative;
+            width: auto;
+            text-align: center;
+            color: #d35414;
+            top: 0;
+            left: 0;
+            padding-bottom: 15px;
+            transition: color .5s ease;
+
+            &:before {
+              content: '';
+              display: block;
+              width: 67px;
+              height: 1px;
+              background-color: #d35414;
+              transition: background .5s ease;
+              position: absolute;
+              left: calc(~'50% - 33px');
+              bottom: 0;
+            }
+
+            &:hover &:before  {
+              width: 500px;
+            }
+          }
+
+          & .arrow {
+            display: none;
+          }
+        }
+      }
+
       &__index-services {
 
           &__wrapper {
+            padding: 0 20px;
 
               &__list {
                 text-align: center;
+
+                  &__element {
+                    width: 100%;
+                  }
+              }
+
+              &__rectangle {
+                position: static;
+                border: 0;
+                width: 100%;
+                min-height: 30px;
+                height: 100%;
+                margin-top: 66px;
+                transition: border .5s ease;
+
+                & a {
+                  margin: 0;
+                  padding: 0;
+                  width: auto;
+                  height: auto;
+                  display: inline;
+                  text-decoration: none;
+                }
+
+                & p {
+                  transform: rotate(0);
+                  position: relative;
+                  width: auto;
+                  text-align: center;
+                  color: #d35414;
+                  transition: color .5s ease;
+                  top: 0;
+                  left: 0;
+                  padding-bottom: 15px;
+
+                  &:before {
+                    content: '';
+                    display: block;
+                    width: 67px;
+                    height: 1px;
+                    background-color: #d35414;
+                    transition: background .5s ease;
+                    position: absolute;
+                    left: calc(~'50% - 33px');
+                    bottom: 0;
+                  }
+                }
+
+                & .arrow {
+                  display: none;
+                }
               }
           }
       }
