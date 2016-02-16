@@ -1,0 +1,213 @@
+(function () {
+    "use strict";
+
+    $(function(){
+
+        var menu = document.getElementById('menu'), // get the menu itself;
+            client_height = document.documentElement.clientHeight,
+            client_width = document.documentElement.clientWidth;
+
+       /*-----------------preloader--------------------*/
+        $(window).on('load', function () {
+            var $preloader = $('.page-preloader'),
+                $spinner   = $preloader.find('.spinner');
+            $spinner.fadeOut();
+            $preloader.addClass('slow');
+        });
+
+
+        function setClient(max, menu, client_height, client_width) {
+            var menu_right = document.getElementsByClassName('js-menu-right')[0],
+                menu_left = document.getElementsByClassName('js-menu-left')[0];
+
+
+
+            if (client_height > max) {
+                menu_right.style.cssText = 'height: '+ client_height + 'px';
+                menu.style.cssText = 'height: '+ client_height + 'px';
+
+                /**
+                 * Если высота окна больше максильмальной высоты submenu, то значение высоты правого блока меню и меню = высоте клиента
+                 * If the height is greater than the maximum height of the window submenu, that is the height of the right block menu and equal to the height of the client
+                 */
+
+                (client_width > 1000) ? menu_left.style.top = '0px' : menu_left.style.top = max + 'px';
+                /*
+                 * У больших экранов делаем левый блок top 0, чтобы не убегал вниз, иначе его делам под правым блоком
+                 * Larger screens do top left block 0, not to run away down, otherwise it works under the right unit
+                 * */
+
+            } else {
+                menu_right.style.cssText = 'height: '+ max + 'px';
+                menu.style.cssText = 'height: '+ client_height + 'px';
+
+                /**
+                 * Иначе правый равен высоте максимального, а само меню клиенту (подтягиваем до размера экрана)
+                 * Otherwise, the right is the maximum altitude, and the menu itself to the client (tightens up the screen size)
+                 */
+
+                (client_width > 1000) ?  menu_left.style.cssText = 'height: '+ max + 'px; \ top: 0' : menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: ' + max +'px';
+                /**
+                 * У больших экранов делаем левый блок высотой по максимальному submenu, иначе по высоте клиента
+                 * Larger screens make the left block of the maximum height submenu, otherwise the height of the client
+                 **/
+            }
+        }
+
+        setClient(max, menu, client_height, client_width);
+
+        /*-------------------------------- maximum list------------------------------------*/
+        function getOffsetRect(elem) {
+            /**
+             *   Получаем отступ сверху и слева для элемента
+             *   We get the top margin and the left of the item
+             **/
+
+            var box = elem.getBoundingClientRect()
+
+            var body = document.body;
+            var docElem = document.documentElement;
+
+            var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+            var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+
+            var clientTop = docElem.clientTop || body.clientTop || 0;
+            var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+
+            var top  = box.top +  scrollTop - clientTop;
+            var left = box.left + scrollLeft - clientLeft;
+
+            return { top: Math.round(top), left: Math.round(left) }
+        }
+
+        var arr = Array(),
+            submenu_li = document.getElementsByClassName('submenu'); //get all submenu
+        for (var i = 0; i < submenu_li.length; i++) {
+            arr[i] = getOffsetRect(submenu_li[i]).top + 2000 + submenu_li[i].offsetHeight;
+            /**
+             * В массив получаем точную координату нижнего угла для каждого submenu, это нам даёт понять, насколько ниже нашей области просмотра может быть выпадающее меню.
+             * Добавляем 2000, т.к. на "-" это расстояние мы прячем наше меню и также добавляем высоту нашего submenu
+             *
+             * The array to get the exact coordinates of the lower corner of each submenu, it allows us to understand how our viewing area below can be a drop-down menu.
+             * Adding 2000 as on "-" the distance we hide our menu and also add the height of our submenu
+             **/
+        }
+        var max = Math.max.apply(0, arr); // max value in array
+
+        /*----------------------------------------------------------------------------------------*/
+
+        /*----------------slider index---------------*/
+
+        function slider_size(client_height) {
+            var slider = document.getElementsByClassName('js-slider')[0];
+
+                slider.style.height = (client_height - 137) + 'px';
+        }
+
+        slider_size(client_height);
+
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            direction: 'vertical'
+        });
+
+        $(window).resize(function() {
+            slider_size();
+            setClient(max);
+        });
+
+        /*---------------------------------visible menu--------------------------------------*/
+        var burger = document.getElementsByClassName('js-transform')[0], //get button menu
+            menu_div = menu.getElementsByTagName('div')[0],
+            content = document.getElementById('content'),
+            footer = document.getElementById('footer'),
+            hide_block = document.getElementsByClassName('js-hide-block')[0];
+
+            var content_height = content.offsetHeight, //get height content
+                footer_height = footer.offsetHeight; //get height footer
+
+
+            burger.onclick = function(){
+                burger.classList.toggle('menu--open');
+                content.classList.toggle('menu--open');
+                menu.classList.toggle('menu-show');
+                menu_div.classList.toggle('menu-show');
+
+                if (content.classList.contains('menu--open')) {
+                    hide_block.style.height = content_height + footer_height + 'px'; // if open menu hide block height = height content + height footer
+                } else {
+                    hide_block.style.height = ''; // else auto
+                }
+            }
+
+        /*--------------click on bird in hide-menu----------*/
+
+        $('.js-arrow-menu').on('click', function(){
+            var $parent = $(this).parent(),
+                $menu_hide = $('.js-hide-menu li');
+
+            // We close everything except this
+            $($menu_hide).each(function(){
+                $(this).removeClass('show-before');
+            });
+
+            $parent.addClass('show-before');
+        });
+            // close this menu item
+        $('.js-close').click(function(){
+            var $parent = $(this).parent();
+            $parent.removeClass('show-before');
+
+        });
+
+        /*-----------------slider rectangle click---------------*/
+        var $rectangle = $('.js-rectangle-click'),
+            height = document.documentElement.clientHeight;
+
+
+        $($rectangle).click(function (){
+            $("body,html").animate({
+                scrollTop: height
+            }, 800);
+            return false;
+        });
+
+        /*--------------------portfolio click arrow top-----------------*/
+            var portfolio_top = document.getElementsByClassName('js-up-page')[0];
+
+        $(portfolio_top).click(function (){
+            $("body,html").animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
+
+        /*-------------------hide content if open menu--------------------------*/
+
+        var hide_block = document.getElementsByClassName('js-hide-block')[0];
+
+
+        var left_hide = document.createElement('div'),
+            right_hide = document.createElement('div');
+
+
+            left_hide.classList.add('left-percent');
+            right_hide.classList.add('right-percent');
+
+            if (client_width < 1920 && client_width > 1000) {
+                right_hide.style.right = '0';
+                hide_block.insertBefore(left_hide, hide_block.firstChild);
+                hide_block.appendChild(right_hide);
+            } else if (client_width <= 1000 && client_width >= 0 ) {
+                left_hide.style.width = '100%';
+                hide_block.insertBefore(left_hide, hide_block.firstChild);
+            }
+
+
+        /*-------------------------------------------------------------------*/
+
+
+    });
+}());
