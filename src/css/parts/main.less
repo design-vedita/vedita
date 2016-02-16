@@ -368,6 +368,7 @@ header {
       position: fixed;
       top: 0;
       z-index: 10;
+
     }
 
       &:after {
@@ -385,7 +386,6 @@ header {
 
           & img {
             max-width: 100%;
-            /*height: 100%;*/
           }
       }
 
@@ -421,7 +421,6 @@ header {
             opacity: 1;
             transition: opacity .1s ease;
           }
-
 
       }
 
@@ -898,11 +897,36 @@ header {
           padding: 0 40px;
           box-sizing: border-box;
 
+            &__left {
+              width: 48.34605597964377%; /* 570/1179 */
+              float: left;
+
+                & div:last-of-type {
+                  margin-right: 0;
+                }
+            }
+
+            &__right {
+              width: 48.34605597964377%; /* 570/1179 */
+              float: right;
+
+                & div:nth-of-type(2) {
+                  margin-right: 0;
+                }
+            }
+
+            &:after {
+              display: block;
+              content: '';
+              width: 100%;
+              clear: both;
+            }
+
             &__list {
-              width: 22.90076335877863%; /* 270/1179 */
+              width: 47.36842105263158%; /* 270/570 */
               display: inline-block;
               vertical-align: top;
-              margin-right: 2.544529262086514%; /* 30/1179 */
+              margin-right: 5.263157894736842%; /* 30/570 */
               margin-bottom: 30px;
               box-sizing: border-box;
 
@@ -915,27 +939,36 @@ header {
                   transition: transform .5s ease;
                 }
 
-                &:first-of-type, &:last-of-type {
-                  width: 48.34605597964377%; /* 570/1179 */
+                &.first, &.last {
+                  width: 100%;
+
+                    & .wrap-img {
+
+                      &:before {
+                        content: "";
+                        display: block;
+                        height: 0;
+                        padding: 0 0 60.875% !important;
+                        width: 100%;
+                      }
+                    }
                 }
 
-                &:nth-of-type(3), &:last-of-type {
+                &:last-of-type {
                   margin-right: 0;
                 }
 
-                &:hover &__wrap-img:before {
+                &:hover &__wrap-img:after {
                   opacity: 1;
                   visibility: visible;
                   transition: opacity .5s ease;
                 }
 
                 &__wrap-img {
-                  width: 100%;
                   overflow: hidden;
                   position: relative;
-                  text-align: center;
 
-                  &:before {
+                  &:after {
                     display: block;
                     position: absolute;
                     left: 0;
@@ -950,10 +983,24 @@ header {
                     transition: opacity .5s ease;
                   }
 
+                  &:before {
+                    content: "";
+                    display: block;
+                    height: 0;
+                    padding: 0 0 129%;
+                    width: 100%;
+                  }
+
                   & img {
                     transform: scale(1);
                     transition: transform .5s ease;
                     width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
                   }
                 }
 
@@ -1410,27 +1457,9 @@ footer {
             width: 100%;
 
               &__list {
-                  width: 48% !important;
-                  margin-right: 3.571428571428571%; /* 20/560 */
+                  width: 100% !important;
+                  margin-right: 0;
 
-                  &:nth-of-type(3n), &:last-of-type {
-                    margin-right: 3.571428571428571%;
-                  }
-
-                  &:nth-of-type(2n) {
-                    margin-right: 0;
-                  }
-
-                  &:first-of-type, &:last-of-type {
-
-                      & .wrap-img {
-                        height: 140px !important;
-                      }
-                  }
-
-                &:nth-of-type(3), &:nth-of-type(5) {
-                  margin-top: -180px;
-                }
               }
           }
       }
@@ -1697,29 +1726,14 @@ footer {
         box-sizing: border-box;
         width: 100%;
 
+        &__left, &__right {
+          float: none;
+          width: 100%;
+        }
+
         &__list {
           width: 100% !important;
-          display: block;
-
-            & .index-job-title {
-              font-size: 15px;
-            }
-
-            & .type-job-title {
-              font-size: 13px;
-            }
-
-            &:first-of-type, &:last-of-type {
-
-                & .wrap-img {
-                  height: 112px;
-                }
-            }
-
-            &:nth-of-type(3), &:nth-of-type(5) {
-              margin-top: 0;
-            }
-
+          margin-right: 0;
         }
       }
     }
@@ -1919,7 +1933,7 @@ footer {
   .content {
 
       &__index-about-company {
-          padding:  20px 0 20px;
+          padding:  0 20px;
 
           &__text {
             column-count: 1 !important;

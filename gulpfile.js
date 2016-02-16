@@ -127,7 +127,7 @@ gulp.task('css:build', function () {
             paths: ['src/css/'],
             compress: true
         }))
-        .pipe(cssmin())
+       // .pipe(cssmin())
         .pipe(gulp.dest(path.build.css));
 });
 
