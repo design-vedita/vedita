@@ -52,7 +52,7 @@ header {
     top: 0;
     left: 0;
     z-index: 9;
-    transition: transform .5s ease;
+    transition: transform 0s ease;
 
       & > div {
         position: absolute;
@@ -106,16 +106,58 @@ header {
               display: inline-block;
               width: 43px;
               height: 43px;
+              border: 2px #89ad70 solid;
+              border-radius: 50%;
+              text-align: center;
+              position: relative;
+
+              &:hover {
+                border: 2px #d35414 solid;
+                transition: all .5s ease;
+              }
+
+              & .soc-ico-hide {
+                fill: #d35414;
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: -70px;
+                left: 9px;
+                opacity: 0;
+                transition: top .5s ease, opacity .5s linear;
+              }
+
+              &:hover > .soc-ico-hide {
+                top: 10px;
+                width: 24px;
+                height: 24px;
+                opacity: 1;
+                transition: top .5s ease, opacity .5s linear;
+              }
+
+              & .soc-ico {
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                fill: #89ad70;
+                top: 10px;
+                left: 9px;
+                opacity: 1;
+                transition: top .5s ease, opacity .5s linear;
+              }
+
+              &:hover > .soc-ico {
+                top: 70px;
+                opacity: 0;
+                transition: top .5s ease, opacity .5s linear;
+              }
 
               &.facebook {
-                .sprite-image(@facebook);
-                .sprite-position(@facebook);
                 margin-right: 15px;
               }
 
               &.vk {
-                .sprite-image(@vk);
-                .sprite-position(@vk);
+
               }
             }
           }
@@ -862,7 +904,7 @@ header {
       margin: 274px auto 0;
       width: 100%;
       background-color: #f9f9f7;
-      padding: 0 40px;
+      padding: 25px 40px 0 40px;
       box-sizing: border-box;
 
         &__text {
@@ -1126,8 +1168,7 @@ header {
     }
 }
 footer {
-  height: 300px;
-  margin-top: 30px;
+  padding-top: 30px;
 }
 @media screen and (min-width: 1000px) and (max-width: 1671px) {
   header {
@@ -1466,7 +1507,7 @@ footer {
       }
 
       &__index-about-company {
-        padding: padding: 55px 20px 0 20px;
+        padding: 55px 20px 0 20px;
       }
   }
 }
@@ -1934,7 +1975,7 @@ footer {
   .content {
 
       &__index-about-company {
-          padding:  0 20px;
+          padding:  25px 20px 0 20px;
 
           &__text {
             column-count: 1 !important;

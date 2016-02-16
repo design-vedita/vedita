@@ -13,9 +13,8 @@
 
         /*--------------------------------------slider index--------------------------------------*/
 
-        function slider_size() {
-            var client_height = document.documentElement.clientHeight,
-                slider = document.getElementsByClassName('js-slider')[0];
+        function slider_size(client_height) {
+            var slider = document.getElementsByClassName('js-slider')[0];
 
             slider.style.height = (client_height - 137) + 'px';
         }
@@ -157,7 +156,7 @@
         /*--------------------------------------function call--------------------------------*/
 
         setClient(max, menu, client_height, client_width);
-        slider_size();
+        slider_size(client_height);
         hideShowPercentBlock(client_width);
         setSizeHideContent(content, footer);
 
@@ -175,7 +174,7 @@
                 client_width = document.documentElement.clientWidth,
                 content = document.getElementById('content');
 
-                slider_size();
+                slider_size(client_height);
                 setClient(max, menu, client_height, client_width);
                 setSizeHideContent(content, footer);
                 hideShowPercentBlock(client_width);
@@ -242,6 +241,7 @@
             var sum = content_height + footer_height;
 
 
+
             if (content.classList.contains('menu--open')) {
                 hide_block.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
             } else {
@@ -270,7 +270,7 @@
 
             $("body,html").animate({
                 scrollTop: 0
-            }, 800);
+            }, 500);
             return false;
 
             setSizeHideContent(content, footer);
