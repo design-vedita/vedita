@@ -7,12 +7,6 @@
   transition: background .5s ease;
   z-index: 8;
 
-    &:hover {
-      background-color: rgba(61, 53, 86, 1);
-      transition: background .5s ease;
-      will-change: background;
-    }
-
     &:after {
       display: block;
       width: 100%;
@@ -22,7 +16,7 @@
 
     & ul {
       line-height: 0;
-      font-size: 1px;
+      font-size: 0;
       width: 88%;
       float: left;
 
@@ -52,7 +46,7 @@
 
             &:hover {
               background-color: #2e2841;
-              transition: background .5s ease;
+              transition: background .5s linear;
               will-change: background;
             }
 
@@ -70,7 +64,7 @@
             & a {
               color: #fff;
               text-decoration: none;
-              font: 13px @ubuntu, sans-serif;
+              font: .8125rem @ubuntu, sans-serif;
               text-transform: uppercase;
               display: block;
               line-height: 70px;
@@ -100,13 +94,14 @@
       text-align: center;
       cursor: pointer;
       transition: background .5s ease;
+      background-color: rgb(61, 53, 86);
 
         & .arrow-up {
           width: 35px;
           height: 35px;
           fill: #fff;
           transform: rotate(180deg);
-          margin-top: 24px;
+          margin-top: 18px;
           transition: margin-top .5s ease, fill .5s ease;
 
         }
@@ -118,11 +113,81 @@
         }
 
         &:hover .arrow-up {
-          margin-top: 17px;
+          margin-top: 14px;
           fill: #9fc187;
           transition: margin-top .5s ease, fill .5s ease;
           will-change: margin-top, fill;
         }
 
     }
+}
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .menu-landing {
+
+      & ul {
+
+          & li {
+
+              & a {
+                font-size: .75rem;
+                padding: 0 14%;
+              }
+          }
+      }
+
+      &__up-page {
+        width: 71px;
+
+        & .arrow-up {
+          width: 35px;
+          height: 21px;
+          margin-top: 26px;
+        }
+      }
+
+  }
+}
+@media screen and (min-width: 460px) and (max-width: 767px) {
+  .menu-landing {
+    height: 55px;
+    transition: height .5s linear;
+    background-color: transparent;
+
+      & ul {
+        display: none;
+      }
+
+
+      &__up-page {
+        height: 100%;
+        width: 70px;
+
+          & .arrow-up {
+            width: 30px;
+            height: 18px;
+          }
+      }
+  }
+}
+@media screen and (min-width: 240px) and (max-width: 459px) {
+  .menu-landing {
+    height: 44px;
+    transition: height .5s linear;
+    background-color: transparent;
+
+    & ul {
+      display: none;
+    }
+
+
+    &__up-page {
+      height: 100%;
+      width: 56px;
+
+      & .arrow-up {
+        width: 25px;
+        height: 15px;
+      }
+    }
+  }
 }

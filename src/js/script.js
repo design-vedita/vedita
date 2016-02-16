@@ -10,6 +10,7 @@
             footer = document.getElementById('footer'),
             hide_block = document.getElementsByClassName('js-hide-block')[0];
 
+
         /*--------------------------------------slider index--------------------------------------*/
 
         function slider_size() {
@@ -118,39 +119,6 @@
         /*----------------------------------------------------------------------------------------*/
 
 
-        /*-------------------------------------visible menu--------------------------------------*/
-
-        function setSizeHideContent(content, footer) {
-            var content_height = content.offsetHeight, //get height content
-                footer_height = footer.offsetHeight; //get height footer
-
-            var sum = content_height + footer_height;
-
-                if (content.classList.contains('menu--open')) {
-                    hide_block.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
-                } else {
-                    hide_block.style.height = ''; // else auto
-                }
-
-        }
-
-        var burger = document.getElementsByClassName('js-transform')[0]; //get button menu
-
-            burger.onclick = function(){
-                burger.classList.toggle('menu--open');
-                content.classList.toggle('menu--open');
-                menu.classList.toggle('menu-show'),
-                hide_block = document.getElementsByClassName('js-hide-block')[0];
-
-                hide_block.style.zIndex = '7';
-
-                if(!burger.classList.contains('menu--open')) {
-                    hide_block.style.zIndex = '-1';
-                }
-
-                setSizeHideContent(content, footer);
-            }
-        /*---------------------------------------------------------------------------------------*/
 
         /*--------------------------------hide content if open menu-----------------------------*/
 
@@ -176,7 +144,7 @@
                     header = document.getElementsByClassName('header-top')[0],
                     header_height = header.offsetHeight;
 
-                    if ( scrolled >= header_height ) {
+                    if ( scrolled >= header_height && !header.classList.contains('scrolled')) {
                         header.classList.add('float-menu');
                     } else {
                         header.classList.remove('float-menu');
@@ -264,5 +232,49 @@
             });
         /*-------------------------------------------------------------------------------*/
 
+
+        /*-------------------------------------visible menu--------------------------------------*/
+
+        function setSizeHideContent(content, footer) {
+            var content_height = content.offsetHeight, //get height content
+                footer_height = footer.offsetHeight; //get height footer
+
+            var sum = content_height + footer_height;
+
+
+            if (content.classList.contains('menu--open')) {
+                hide_block.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
+            } else {
+                hide_block.style.height = ''; // else auto
+            }
+
+        }
+
+        var burger = document.getElementsByClassName('js-transform')[0], //get button menu
+            header_top  = document.getElementsByClassName('header-top')[0];
+
+        burger.onclick = function(){
+            burger.classList.toggle('menu--open');
+            content.classList.toggle('menu--open');
+            menu.classList.toggle('menu-show');
+            hide_block = document.getElementsByClassName('js-hide-block')[0];
+            header_top.classList.remove('float-menu');
+            header_top.classList.toggle('scrolled'); // add/remove class scrolled
+
+            hide_block.style.zIndex = '7';
+
+            if(!burger.classList.contains('menu--open')) {
+                hide_block.style.zIndex = '-1';
+            }
+
+
+            $("body,html").animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+
+            setSizeHideContent(content, footer);
+        }
+        /*---------------------------------------------------------------------------------------*/
     });
 }());

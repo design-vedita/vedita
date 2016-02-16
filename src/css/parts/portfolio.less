@@ -4,26 +4,16 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  transition: background .5s ease;
+  transition: background .5s ease, height .5s ease;
   z-index: 8;
   background-color: rgb(61, 53, 86);
 
-  /*&:hover {
-    background-color: rgba(61, 53, 86, 1);
-    transition: background .5s ease;
-  }*/
 
   &:after {
     content: '';
     display: block;
     width: 100%;
     clear: both;
-  }
-
-  & > div:hover {
-    background-color: #2e2841;
-    transition: background .5s linear;
-    will-change: background;
   }
 
   &__all-job {
@@ -80,54 +70,70 @@
     vertical-align: middle;
   }
 
-  & .links {
-    width: 44%;
-    color: #fff;
-    height: 70px;
+  &__wrap-links {
     float: left;
-    background-color: rgba(61, 53, 86, .95);
-    box-sizing: border-box;
-    line-height: 70px;
-    transition: background .5s linear;
+    width: calc(~'100% - 228px');
+    height: 70px;
+    font-size: 0;
+    line-height: normal;
 
-    & a {
-      text-decoration: none;
-      color: transparent;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &__prev-job {
-    text-align: right;
-    padding-right: 5%;
-    box-sizing: border-box;
-    transition: right .5s ease;
-
-    & .arrow {
-      transform: rotate(90deg);
+    & > div:hover {
+      background-color: #2e2841;
+      transition: background .5s linear;
+      will-change: background;
     }
 
-    & p {
-      .portfolio-links-p;
-      margin-right: 5%;
-    }
-  }
+    & .links {
+      width: 50%;
+      color: #fff;
+      height: 70px;
+      display: inline-block;
+      background-color: rgba(61, 53, 86, .95);
+      box-sizing: border-box;
+      line-height: 70px;
+      transition: background .5s linear;
 
-  &__next-job {
-    text-align: left;
-    padding-left: 5%;
-    box-sizing: border-box;
-
-    & .arrow {
-      transform: rotate(-90deg);
+      & a {
+        text-decoration: none;
+        color: transparent;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
 
-    & p {
-      .portfolio-links-p;
-      margin-left: 5%;
+    &__prev-job {
+      text-align: right;
+      box-sizing: border-box;
+      transition: right .5s ease;
+      padding-right: 26px;
+      border-right: 1px  rgba(255, 255, 255, .17) solid;
+
+      & .arrow {
+        transform: rotate(90deg);
+      }
+
+      & p {
+        .portfolio-links-p;
+        margin-right: 5%;
+      }
     }
+
+    &__next-job {
+      text-align: left;
+      box-sizing: border-box;
+      padding-left: 26px;
+
+      & .arrow {
+        transform: rotate(-90deg);
+      }
+
+      & p {
+        .portfolio-links-p;
+        margin-left: 5%;
+      }
+    }
+
   }
 
   &__up-page {
@@ -144,7 +150,7 @@
     transition: background .5s linear;
 
     & .arrow-up {
-      margin-top: 24px;
+      margin-top: 18px;
       width: 35px;
       height: 35px;
       fill: #fff;
@@ -153,12 +159,119 @@
     }
 
     &:hover .arrow-up {
-      margin-top: 17px;
+      margin-top: 14px;
       fill: #9fc187;
       transition: margin-top .5s ease, fill .5s ease;
       will-change: margin-top, fill;
     }
   }
 }
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .menu-portfolio {
 
+      & .arrow {
+        width: 32px;
+        height: 21px;
+      }
+
+      &__wrap-links {
+        height: 100%;
+
+        &__prev-job {
+
+            & p {
+              margin-right: 3%;
+            }
+        }
+
+        &__next-job {
+
+            & p {
+              margin-left: 3%;
+            }
+        }
+      }
+
+      &__up-page {
+
+        & .arrow-up {
+          width: 32px;
+          height: 21px;
+          margin-top: 24px;
+        }
+      }
+  }
+
+}
+
+@media screen and (min-width: 460px) and (max-width: 767px) {
+  .menu-portfolio {
+    height: 55px;
+    transition: height .5s ease;
+
+    & .arrow {
+      width: 21px;
+      height: 35px;
+    }
+
+    &__all-job {
+      height: 100%;
+      width: 74px;
+
+      &__wrapper {
+        padding-top: 12px;
+      }
+    }
+
+    &__wrap-links {
+      height: 100%;
+      width: calc(~'100% - 148px');
+
+        & .links {
+          height: 100%;
+          line-height: 57px;
+
+            & p {
+              display: none;
+            }
+        }
+    }
+
+    &__up-page {
+      width: 74px;
+
+        & .arrow-up {
+          margin-top: 16px;
+          width: 28px;
+          height: 23px;
+        }
+    }
+  }
+}
+@media screen and (min-width: 240px) and (max-width: 459px) {
+  .menu-portfolio {
+    background-color: transparent;
+    height: 44px;
+    transition: height .5s linear;
+
+    &__all-job {
+      display: none;
+    }
+
+    &__wrap-links {
+      display: none;
+    }
+
+    &__up-page {
+      width: 56px;
+      height: 44px;
+
+      & .arrow-up {
+        width: 25px;
+        height: 15px;
+        margin-top: 16px;
+      }
+    }
+  }
+}
 /*-----------------------------------------------------------*/
