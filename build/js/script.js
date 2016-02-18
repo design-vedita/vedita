@@ -8,15 +8,20 @@
             client_width = document.documentElement.clientWidth,
             content = document.getElementById('content'),
             footer = document.getElementById('footer'),
-            hide_block = document.getElementsByClassName('js-hide-block')[0];
+            hide_block = document.getElementsByClassName('js-hide-block')[0],
+            rectangle = document.getElementsByClassName('js-rectangle-click')[0],
+            top_menu = document.getElementsByClassName('js-header-top')[0];
 
 
         /*--------------------------------------slider index--------------------------------------*/
 
-        function slider_size(client_height) {
+        function slider_size(client_height, rectangle, top_menu) {
             var slider = document.getElementsByClassName('js-slider')[0];
 
-            slider.style.height = (client_height - 137) + 'px';
+
+            var sum = rectangle.offsetHeight + top_menu.offsetHeight; // sum height rectagle and header top-menu
+
+            slider.style.height = (client_height - sum) + 'px';
         }
 
         var swiper = new Swiper('.swiper-container', {
@@ -140,7 +145,7 @@
         /**/
             function floatingMenu() {
                 var scrolled = window.pageYOffset || document.documentElement.scrollTop,
-                    header = document.getElementsByClassName('header-top')[0],
+                    header = document.getElementsByClassName('js-header-top')[0],
                     header_height = header.offsetHeight;
 
                     if ( scrolled >= header_height && !header.classList.contains('scrolled')) {
@@ -156,7 +161,7 @@
         /*--------------------------------------function call--------------------------------*/
 
         setClient(max, menu, client_height, client_width);
-        slider_size(client_height);
+        slider_size(client_height, rectangle, top_menu);
         hideShowPercentBlock(client_width);
         setSizeHideContent(content, footer);
 
@@ -172,9 +177,11 @@
         window.onresize = function() {
             var client_height = document.documentElement.clientHeight,
                 client_width = document.documentElement.clientWidth,
-                content = document.getElementById('content');
+                content = document.getElementById('content'),
+                rectangle = document.getElementsByClassName('js-rectangle-click')[0],
+                top_menu = document.getElementsByClassName('js-header-top')[0];
 
-                slider_size(client_height);
+                slider_size(client_height, rectangle, top_menu);
                 setClient(max, menu, client_height, client_width);
                 setSizeHideContent(content, footer);
                 hideShowPercentBlock(client_width);
@@ -251,7 +258,7 @@
         }
 
         var burger = document.getElementsByClassName('js-transform')[0], //get button menu
-            header_top  = document.getElementsByClassName('header-top')[0];
+            header_top  = document.getElementsByClassName('js-header-top')[0];
 
         burger.onclick = function(){
             burger.classList.toggle('menu--open');

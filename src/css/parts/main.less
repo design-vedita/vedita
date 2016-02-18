@@ -52,7 +52,7 @@ header {
     top: 0;
     left: 0;
     z-index: 9;
-    transition: transform 0s ease;
+    transition: transform .5s ease;
 
       & > div {
         position: absolute;
@@ -124,7 +124,7 @@ header {
                 top: -70px;
                 left: 9px;
                 opacity: 0;
-                transition: top .5s ease, opacity .5s linear;
+                transition: top .5s ease, opacity .5s ease, width .5s ease .5s, height .5s ease .5s;
               }
 
               &:hover > .soc-ico-hide {
@@ -132,7 +132,7 @@ header {
                 width: 24px;
                 height: 24px;
                 opacity: 1;
-                transition: top .5s ease, opacity .5s linear;
+                transition: top .5s ease, opacity .5s ease;
               }
 
               & .soc-ico {
@@ -727,6 +727,7 @@ header {
         right: 0;
         z-index: 7;
         cursor: pointer;
+        bottom: -63px;
 
           & .arrow {
             fill: #fff;
