@@ -4,24 +4,24 @@
     $(function(){
 
         var menu = document.getElementById('menu'), // get the menu itself;
-            client_height = document.documentElement.clientHeight,
-            client_width = document.documentElement.clientWidth,
+            clientHeight = document.documentElement.clientHeight,
+            clientWidth = document.documentElement.clientWidth,
             content = document.getElementById('content'),
             footer = document.getElementById('footer'),
-            hide_block = document.getElementsByClassName('js-hide-block')[0],
+            hideBlock = document.getElementsByClassName('js-hide-block')[0],
             rectangle = document.getElementsByClassName('js-rectangle-click')[0],
-            top_menu = document.getElementsByClassName('js-header-top')[0];
+            topMenu = document.getElementsByClassName('js-header-top')[0];
 
 
         /*--------------------------------------slider index--------------------------------------*/
 
-        function slider_size(client_height, rectangle, top_menu) {
+        function slider_size(clientHeight, rectangle, topMenu) {
             var slider = document.getElementsByClassName('js-slider')[0];
 
 
-            var sum = rectangle.offsetHeight + top_menu.offsetHeight; // sum height rectagle and header top-menu
+            var sum = rectangle.offsetHeight + topMenu.offsetHeight; // sum height rectagle and header top-menu
 
-            slider.style.height = (client_height - sum) + 'px';
+            slider.style.height = (clientHeight - sum) + 'px';
         }
 
         var swiper = new Swiper('.swiper-container', {
@@ -41,20 +41,20 @@
         });
 
         /*-------------------------------------------height open menu-----------------------------------------------*/
-        function setClient(max, menu, client_height, client_width) {
+        function setClient(max, menu, clientHeight, clientWidth) {
             var menu_right = document.getElementsByClassName('js-menu-right')[0],
                 menu_left = document.getElementsByClassName('js-menu-left')[0];
 
-            if (client_height < max) {
+            if (clientHeight < max) {
                 menu_right.style.cssText = 'height: '+ max + 'px';
-                menu.style.cssText = 'height: '+ client_height + 'px';
+                menu.style.cssText = 'height: '+ clientHeight + 'px';
 
                 /**
                  * ���� ������ ���� ������ �������������� ������ submenu, �� �������� ������ ������� ����� ���� � ���� = ������ �������
                  * If the height is greater than the maximum height of the window submenu, that is the height of the right block menu and equal to the height of the client
                  */
 
-                (client_width > 1000) ? menu_left.style.top = '0px' : menu_left.style.top = max + 'px';
+                (clientWidth > 1000) ? menu_left.style.top = '0px' : menu_left.style.top = max + 'px';
                 /*
                  * � ������� ������� ������ ����� ���� top 0, ����� �� ������ ����, ����� ��� ����� ��� ������ ������
                  * Larger screens do top left block 0, not to run away down, otherwise it works under the right unit
@@ -62,18 +62,18 @@
 
             } else {
                 menu_right.style.cssText = 'height: '+ max + 'px';
-                menu.style.cssText = 'height: '+ client_height + 'px';
+                menu.style.cssText = 'height: '+ clientHeight + 'px';
 
                 /**
                  * ����� ������ ����� ������ �������������, � ���� ���� ������� (����������� �� ������� ������)
                  * Otherwise, the right is the maximum altitude, and the menu itself to the client (tightens up the screen size)
                  */
 
-                 if (client_width > 1000) {
-                     menu_left.style.cssText = 'height: ' + client_height + 'px; \ top: 0';
-                     menu_right.style.cssText = 'height: ' + client_height + 'px';
+                 if (clientWidth > 1000) {
+                     menu_left.style.cssText = 'height: ' + clientHeight + 'px; \ top: 0';
+                     menu_right.style.cssText = 'height: ' + clientHeight + 'px';
                  } else {
-                     menu_left.style.cssText = 'height: '+ client_height + 'px; \ top: ' + max +'px';
+                     menu_left.style.cssText = 'height: '+ clientHeight + 'px; \ top: ' + max +'px';
                  }
                 /**
                  * � ������� ������� ������ ����� ���� ������� �� ������������� submenu, ����� �� ������ �������
@@ -126,15 +126,15 @@
 
         /*--------------------------------hide content if open menu-----------------------------*/
 
-        function hideShowPercentBlock(client_width) {
+        function hideShowPercentBlock(clientWidth) {
             var right_hide = document.getElementsByClassName('right-percent')[0],
                 left_hide = document.getElementsByClassName('left-percent')[0];
 
-                if (client_width <= 1960 && client_width > 1000) {
+                if (clientWidth <= 1960 && clientWidth > 1000) {
                     right_hide.style.right = '0';
                     right_hide.style.display = 'block';
                     left_hide.style.display = 'block';
-                } else if (client_width <= 1000 && client_width >= 0 ) {
+                } else if (clientWidth <= 1000 && clientWidth >= 0 ) {
                     left_hide.style.width = '100%';
                     right_hide.style.display = 'none';
                 }
@@ -160,10 +160,11 @@
 -
         /*--------------------------------------function call--------------------------------*/
 
-        setClient(max, menu, client_height, client_width);
-        slider_size(client_height, rectangle, top_menu);
-        hideShowPercentBlock(client_width);
+        setClient(max, menu, clientHeight, clientWidth);
+        slider_size(clientHeight, rectangle, topMenu);
+        hideShowPercentBlock(clientWidth);
         setSizeHideContent(content, footer);
+        rectangleClick(clientHeight);
 
         window.onload = function(){
 
@@ -174,17 +175,18 @@
             }
         }
 
+
         window.onresize = function() {
-            var client_height = document.documentElement.clientHeight,
-                client_width = document.documentElement.clientWidth,
+            var clientHeight = document.documentElement.clientHeight,
+                clientWidth = document.documentElement.clientWidth,
                 content = document.getElementById('content'),
                 rectangle = document.getElementsByClassName('js-rectangle-click')[0],
-                top_menu = document.getElementsByClassName('js-header-top')[0];
+                topMenu = document.getElementsByClassName('js-header-top')[0];
 
-                slider_size(client_height, rectangle, top_menu);
-                setClient(max, menu, client_height, client_width);
+                slider_size(clientHeight, rectangle, topMenu);
+                setClient(max, menu, clientHeight, clientWidth);
                 setSizeHideContent(content, footer);
-                hideShowPercentBlock(client_width);
+                hideShowPercentBlock(clientWidth);
         }
 
 
@@ -216,15 +218,17 @@
         /*-------------------------------------------------------------------------------*/
 
         /*--------------------------------slider rectangle click-------------------------*/
-        var $rectangle = $('.js-rectangle-click'),
-            height = document.documentElement.clientHeight;
+        function rectangleClick(clientHeight) {
+            var $rectangle = $('.js-rectangle-click');
 
             $($rectangle).click(function (){
                 $("body,html").animate({
-                    scrollTop: height
-                }, 800);
+                    scrollTop: clientHeight
+                }, 500);
                 return false;
             });
+        }
+
         /*-------------------------------------------------------------------------------*/
 
         /*---------------------------portfolio click arrow top---------------------------*/
@@ -250,9 +254,9 @@
 
 
             if (content.classList.contains('menu--open')) {
-                hide_block.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
+                hideBlock.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
             } else {
-                hide_block.style.height = ''; // else auto
+                hideBlock.style.height = ''; // else auto
             }
 
         }
@@ -264,14 +268,14 @@
             burger.classList.toggle('menu--open');
             content.classList.toggle('menu--open');
             menu.classList.toggle('menu-show');
-            hide_block = document.getElementsByClassName('js-hide-block')[0];
+            hideBlock = document.getElementsByClassName('js-hide-block')[0];
             header_top.classList.remove('float-menu');
             header_top.classList.toggle('scrolled'); // add/remove class scrolled
 
-            hide_block.style.zIndex = '7';
+            hideBlock.style.zIndex = '7';
 
             if(!burger.classList.contains('menu--open')) {
-                hide_block.style.zIndex = '-1';
+                hideBlock.style.zIndex = '-1';
             }
 
 
