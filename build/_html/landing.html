@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>  Главная</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/libs/swiper/swiper.min.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon"/>
+    <script src="../js/modernizr.custom.js"></script>
+  </head>
+  <body><div style="height: 0; width: 0; position: absolute; visibility: hidden; left: -100%;overflow: hidden;">
+    <!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#3d3556;fill-rule:evenodd}</style></defs><symbol id="arrow-menu" viewBox="0 0 611.949 611.949"><path d="M604.925 134.423c-9.5-9.5-24.9-9.5-34.4 0l-264.6 289.001-264.4-288.901c-9.5-9.5-24.9-9.5-34.4 0s-9.5 24.9 0 34.5l275.4 300.8c1.2 2.9 2.9 5.601 5.2 7.9 5 5 11.6 7.2 18.1 6.899 6.6.301 13.299-1.899 18.299-6.899 2.4-2.4 4.2-5.101 5.301-8.101l275.3-300.8c9.599-9.399 9.599-24.799.2-34.399z"/></symbol><symbol id="facebook" viewBox="0 0 155.139 155.139"><path d="M89.584 155.139V84.378h23.742l3.562-27.585H89.584V39.184c0-7.984 2.208-13.425 13.67-13.425l14.595-.006V1.08C115.325.752 106.661 0 96.577 0 75.52 0 61.104 12.853 61.104 36.452v20.341H37.29v27.585h23.814v70.761h28.48z"/></symbol><symbol id="logo" viewBox="0 0 487.000000 129.000000"><path d="M184.6 1.6C183.3 2.9 183 6 183 20.1V37l-4.2-3c-12.6-9.1-30.3-7.7-41.4 3.4-15.1 15.1-10.7 40.1 8.9 50.3 4.5 2.4 6.4 2.8 13.7 2.8 7.9 0 9-.3 15-3.6 7-3.8 12.7-10.2 15-16.7 1-2.7 1.5-12.4 1.7-35.7.4-29.6.3-32-1.3-33.2-2.3-1.7-3.9-1.6-5.8.3zm-12.7 38.1c2.7 1.7 5.8 4.8 7.6 7.8 2.6 4.2 3 5.8 3 11.9 0 5.9-.5 7.9-2.7 11.7-9 15.3-31.8 14.8-40-1-10.8-20.6 12.4-42.6 32.1-30.4zM202.2 1.2c-1.7 1.7-1.7 124.9 0 126.6 1.9 1.9 4.5 1.4 6.2-1 1.4-2 1.6-9.6 1.6-62.3 0-52.7-.2-60.3-1.6-62.3-1.7-2.4-4.3-2.9-6.2-1zM220.1 1.4c-.9 1-1.1 10.5-.9 35.3l.3 33.8 2.7 5.1c3.5 6.6 9.8 12 16.2 13.9 6.4 1.9 10.1 1.9 12.1-.1 3.3-3.4 0-6.7-7.8-7.9-5-.8-12.3-7.4-13.8-12.4-.5-2-.9-8.1-.7-13.6l.3-10 11.2-.3c11.1-.3 11.3-.3 11.9-2.7 1.2-4.7-.8-5.5-12.7-5.5H228V20.7c0-13.1-.3-16.7-1.6-18.5-1.7-2.5-4.6-2.9-6.3-.8zM1.2 27.2C.6 27.8 0 29 0 29.7c0 1 18.8 45.3 24 56.5 1.5 3.1 4.5 4.5 6.4 2.9.7-.6 7.1-14.2 14.1-30.2l12.8-29-2-2.1c-4.1-4.1-5.4-2.3-16.4 22.9-10.1 23-10.3 23.5-11.6 20.7-.8-1.6-5.5-12.3-10.7-23.9C8.5 29.1 7 26.5 4.9 26.2c-1.3-.2-3 .3-3.7 1zM79.3 29.9c-7.7 2.6-13.6 8-17.5 15.9-2.9 5.8-3.3 7.7-3.3 14.2.1 9.6 2.9 16.2 9.6 22.5 7.1 6.6 12.7 8.9 21.9 8.9s15.9-2.7 21.6-8.5c3.1-3.2 3.6-4.3 2.8-5.6-2.4-3.8-4.1-3.9-8.3-.5-10.3 8.2-23.4 8-32.4-.6-3.4-3.2-7-9.9-6.2-11.2.4-.6 10.7-1 25.8-1 13.9 0 25.8-.4 26.6-.9.9-.6 1.3-2.6 1.3-5.7-.3-10.6-10.5-24.3-20.9-27.8-6.1-2.1-14.5-2-21 .3zm19.1 7.5c4.8 2 10 7 12.1 11.5 3.2 7.2 3.3 7.2-21.2 6.9l-21.8-.3.2-3c.6-8.1 11.8-16.5 22-16.5 3 0 6.8.6 8.7 1.4zM283 29.3c-22.7 6.4-30.8 34.1-15.1 51.9 1.8 2.1 6 5.1 9.3 6.8 10.5 5.2 24.4 3.9 33.1-3.1l3.7-3v3.5c0 3.8 2.1 6.6 4.9 6.6 3.9 0 4.3-2.1 3.9-21.7-.3-16.6-.6-19.3-2.5-23.4-6.1-13.5-23.4-21.6-37.3-17.6zm19.1 10.5c10 5.2 14.6 17.8 10.4 28.7-2.1 5.5-9.3 12.1-14.9 13.6-9.8 2.6-20.6-1.6-25.9-10.3-12.4-20 9.5-42.9 30.4-32zM220.7 102.7c-.4.3-.7 6.1-.7 12.9 0 12.1 0 12.2 2.5 12.8 4.5 1.1 10.8-1 14.4-5 3.1-3.4 3.3-4 2.9-9-.5-6-2.5-8.9-7.5-11-3.4-1.5-10.5-1.9-11.6-.7zm13.9 4.7c2.8 2.8 3.4 4.1 3.4 7.8 0 2.4-.7 5.4-1.6 6.7-2 2.8-7.2 5.1-11.4 5.1h-3v-23h4.6c3.9 0 5.1.5 8 3.4zM307.5 113.2c-2.6 6.2-5.2 12.1-5.7 13-.6 1.2-.5 1.8.2 1.8.6 0 1.8-1.6 2.6-3.5 1.4-3.5 1.4-3.5 7.9-3.5s6.5 0 7.9 3.5c.8 1.9 2 3.5 2.5 3.5.6 0-.6-3.7-2.5-8.2-2-4.6-4.3-10.1-5.1-12.3-.9-2.2-1.9-4.4-2.3-4.8-.4-.5-2.9 4.2-5.5 10.5zM355 114.5c-2.9 6.9-5 12.9-4.7 13.2.4.3 1.4-1.1 2.3-3.1 1.8-3.6 1.8-3.6 8.1-3.6 6.2 0 6.3 0 7.7 3.5.8 1.9 2 3.5 2.5 3.5.6 0-.6-3.7-2.5-8.2-2-4.6-4.3-10.1-5.1-12.3-.9-2.2-1.9-4.4-2.3-4.8-.4-.4-3.1 4.9-6 11.8z"/></symbol><symbol id="rouble" viewBox="0 0 31.625 44.12"><path class="cls-1" d="M7.162 44.13a.871.871 0 0 1-.872-.87V.87A.871.871 0 0 1 7.162 0H19.25c5.139 0 12.378 3.45 12.378 11.12 0 7.63-7.239 11.06-12.378 11.06h-7.555a.87.87 0 1 1 0-1.74h7.555c3.47 0 10.635-2.27 10.635-9.32 0-7.08-7.165-9.38-10.635-9.38H8.028v41.52a.871.871 0 0 1-.866.87zm0-22.05H.886a.87.87 0 1 1 0-1.74h6.276a.87.87 0 1 1 0 1.74zm7.061 5.69H.881a.87.87 0 1 1 0-1.74h13.337a.87.87 0 1 1 0 1.74z"/></symbol><symbol id="vk" viewBox="0 0 532.337 532.337"><path d="M471.998 241.286c7.57-9.786 13.58-17.638 18.018-23.562 31.965-42.498 45.82-69.646 41.574-81.482l-1.666-2.772c-1.107-1.665-3.977-3.194-8.592-4.578-4.621-1.383-10.533-1.604-17.736-.691l-79.822.563a22.728 22.728 0 0 0-5.545.128c-1.848.281-3.047.563-3.605.832-.557.282-1.016.508-1.383.692l-1.107.832c-.924.551-1.939 1.524-3.047 2.914-1.109 1.389-2.039 2.999-2.773 4.853-8.684 22.356-18.568 43.146-29.656 62.363-6.838 11.457-13.123 21.396-18.844 29.792-5.729 8.415-10.533 14.603-14.414 18.568-3.879 3.972-7.393 7.166-10.531 9.56-3.146 2.411-5.545 3.421-7.203 3.054a138.055 138.055 0 0 1-4.713-1.114c-2.588-1.658-4.67-3.917-6.236-6.787-1.572-2.857-2.631-6.463-3.189-10.808-.551-4.339-.881-8.084-.967-11.23-.098-3.139-.049-7.57.141-13.305.184-5.729.275-9.602.275-11.64 0-7.014.141-14.639.418-22.864.275-8.219.508-14.737.691-19.542.184-4.798.275-9.884.275-15.245 0-5.349-.324-9.56-.975-12.613a44.18 44.18 0 0 0-2.906-8.868c-1.297-2.858-3.189-5.08-5.686-6.646-2.496-1.573-5.588-2.815-9.283-3.746-9.799-2.222-22.271-3.409-37.418-3.604-34.37-.355-56.451 1.86-66.243 6.658-3.88 2.038-7.393 4.804-10.532 8.317-3.329 4.07-3.788 6.291-1.383 6.646 11.089 1.665 18.936 5.643 23.556 11.922l1.665 3.323c1.291 2.411 2.583 6.659 3.88 12.754 1.292 6.096 2.124 12.84 2.497 20.233.924 13.488.924 25.031 0 34.646-.924 9.614-1.799 17.093-2.631 22.442-.833 5.361-2.081 9.7-3.74 13.023-1.665 3.335-2.772 5.367-3.329 6.107-.557.734-1.016 1.199-1.383 1.384a20.804 20.804 0 0 1-7.484 1.383c-2.589 0-5.729-1.298-9.425-3.887-3.697-2.576-7.534-6.138-11.5-10.667-3.978-4.522-8.452-10.856-13.446-18.99-4.988-8.121-10.166-17.736-15.521-28.819l-4.431-8.042c-2.772-5.165-6.561-12.699-11.365-22.583s-9.058-19.443-12.748-28.69c-1.481-3.874-3.697-6.83-6.652-8.868l-1.383-.832c-.924-.735-2.405-1.524-4.437-2.351a29.865 29.865 0 0 0-6.377-1.805l-75.943.551c-7.76 0-13.023 1.763-15.795 5.275l-1.108 1.659c-.56.93-.835 2.411-.835 4.437 0 2.038.557 4.529 1.665 7.479 11.089 26.059 23.146 51.188 36.169 75.386 13.03 24.211 24.346 43.709 33.954 58.489 9.608 14.792 19.4 28.733 29.382 41.854 9.982 13.121 16.585 21.523 19.816 25.214 3.231 3.703 5.771 6.476 7.62 8.317l6.928 6.658c4.431 4.432 10.949 9.743 19.542 15.937 8.592 6.193 18.103 12.289 28.55 18.287 10.435 6.01 22.589 10.899 36.444 14.694 13.856 3.794 27.344 5.317 40.465 4.571h31.874c6.469-.551 11.363-2.576 14.688-6.096l1.107-1.383c.734-1.102 1.432-2.815 2.08-5.123.643-2.307.975-4.853.975-7.619-.191-7.943.416-15.116 1.799-21.481 1.383-6.377 2.955-11.175 4.713-14.418 1.756-3.226 3.738-5.955 5.959-8.177 2.217-2.222 3.783-3.55 4.713-4.015.924-.453 1.666-.777 2.217-.973 4.43-1.476 9.65-.043 15.66 4.296 6.004 4.352 11.641 9.7 16.91 16.077 5.262 6.377 11.59 13.531 18.984 21.481 7.387 7.943 13.855 13.855 19.4 17.735l5.545 3.336c3.695 2.209 8.494 4.241 14.412 6.096 5.912 1.842 11.09 2.307 15.52 1.383l70.955-1.114c7.02 0 12.473-1.15 16.354-3.464 3.879-2.295 6.188-4.853 6.928-7.619.734-2.772.783-5.899.141-9.419-.648-3.507-1.297-5.955-1.939-7.338-.648-1.383-1.25-2.546-1.807-3.464-9.24-16.628-26.885-37.051-52.938-61.255l-.557-.551-.275-.281-.275-.27h-.278c-11.83-11.273-19.309-18.85-22.449-22.736-5.727-7.38-7.025-14.865-3.879-22.441 2.203-5.745 10.514-17.85 24.926-36.333z"/></symbol></svg><!-- endinject -->
+</div>
+    <div class="page-preloader"><span class="spinner"></span></div>
+    <header class="js-header">
+      <div class="menu js-menu" id="menu">
+        <div class="menu__left js-menu-left">
+          <div class="menu__logo"><img src="../img/logo.png"/></div>
+          <div class="menu__contact-info">
+            <p><span class="number">+7<span> (495)</span>  215-51-36<span class="mail">  msk@vedita.ru</span></span></p>
+            <p><span class="number">+7<span> (4752)</span>  48-54-15<span class="mail">  info@vedita.ru</span></span></p>
+            <div class="menu__call call-animate">
+              <div class="header-top__top-animate top-animate"></div>
+              <div class="header-top__right-animate right-animate"></div>
+              <div class="header-top__bottom-animate bottom-animate"></div><a href="javascript:void(0)"> Заказать звонок</a>
+            </div>
+            <div class="menu__soc"><a class="facebook" href="javascript:void(0)">
+                <svg class="soc-ico-hide">
+                  <use xlink:href="#facebook"></use>
+                </svg>
+                <svg class="soc-ico">
+                  <use xlink:href="#facebook"></use>
+                </svg></a><a class="facebook" href="javascript:void(0)">
+                <svg class="soc-ico-hide">
+                  <use xlink:href="#vk"></use>
+                </svg>
+                <svg class="soc-ico">
+                  <use xlink:href="#vk"></use>
+                </svg></a></div>
+          </div>
+        </div>
+        <div class="menu__right js-menu-right">
+          <ul class="js-hide-menu">
+            <li><a class="active" href="javascript:void(0)">О нас</a>
+              <svg class="arrow-menu js-arrow-menu">
+                <use xlink:href="#arrow-menu"></use>
+              </svg>
+              <div class="js-close"></div>
+              <ul class="submenu js-submenu">
+                <li><a href="javascript:void(0)"> Отзывы</a></li>
+                <li><a href="javascript:void(0)"> Вакансии</a></li>
+                <li><a href="javascript:void(0)"> Аналитика</a></li>
+                <li><a href="javascript:void(0)"> Публикации</a></li>
+                <li><a href="javascript:void(0)"> Новости</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:void(0)">Услуги</a>
+              <svg class="arrow-menu js-arrow-menu">
+                <use xlink:href="#arrow-menu"></use>
+              </svg>
+              <div class="js-close"></div>
+              <ul class="submenu js-submenu">
+                <li><a href="javascript:void(0)"> Создание сайтов</a></li>
+                <li><a href="javascript:void(0)"> Продвижение сайтов</a></li>
+                <li><a href="javascript:void(0)"> Создание сайтов</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:void(0)"> Портфолио</a></li>
+            <li><a href="javascript:void(0)">1С-Битрикс</a>
+              <svg class="arrow-menu js-arrow-menu">
+                <use xlink:href="#arrow-menu"></use>
+              </svg>
+              <div class="js-close"></div>
+              <ul class="submenu js-submenu">
+                <li><a href="javascript:void(0)"> Партнёр 1С-Битрикс</a></li>
+                <li><a href="javascript:void(0)"> Семинары 1С-Битрикс</a></li>
+                <li><a href="javascript:void(0)"> Партнёр 1С-Битрикс</a></li>
+                <li><a href="javascript:void(0)"> Перевод сайтов на битрикс</a></li>
+              </ul>
+            </li>
+            <li><a href="javascript:void(0)"> Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-top js-header-top">
+        <div class="header-top__logo"><a href="javascript:void(0)"><img src="../img/logo.png"/></a></div> 
+        <div class="header-top__call-request call-animate">
+          <div class="header-top__top-animate top-animate"></div>
+          <div class="header-top__top-animate right-animate"></div>
+          <div class="header-top__top-animate bottom-animate"></div><a href="javascript:void(0)"> Заказать звонок</a>
+        </div>
+        <div class="header-top__phone">
+          <p> +7<span> (495)</span> 215-51-36
+          </p>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-bottom__slider swiper-container js-slider">
+          <div class="header-bottom__swiper-wrapper swiper-wrapper">
+            <div class="header-bottom__slide swiper-slide" style="background-image:url(../img/landing.jpg)">
+              <div class="header-bottom__center-slide">
+                <p class="header-bottom__title-slide"> разработка лендингов<span>  под ключ</span> рост продаж на<span class="percent">  200%</span></p>
+                <ul class="header-bottom__list-services">
+                  <li>
+                    <div class="header-bottom__ico-slide multilanding-ico"></div>
+                    <p> Технологии мультилендинга</p>
+                  </li>
+                  <li>
+                    <div class="header-bottom__ico-slide complex"></div>
+                    <p> Комплексное продвижение</p>
+                  </li>
+                  <li>
+                    <div class="header-bottom__ico-slide selling-texts"></div>
+                    <p> Продающие тексты по формуле AIDCKA</p>
+                  </li>
+                  <li>
+                    <div class="header-bottom__ico-slide web-analitics"></div>
+                    <p> Сквозная веб-аналитика</p>
+                  </li>
+                </ul><a class="header-bottom__order" href="javascript:void(0)"> Оставить заявку</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rectangle-slider js-rectangle-click">
+          <svg class="arrow">
+            <use xlink:href="#arrow-menu"></use>
+          </svg>
+        </div>
+      </div>
+    </header>
+    <div class="content" id="content">
+      <section class="services landing__services">
+        <p class="content-h1">  профессиональный подход - гарантия результата!</p>
+        <div class="services__wrapper">
+          <div class="services__list">
+            <div class="services__element">
+              <div class="services__figures">
+                <p> 8<span> лет</span></p>
+              </div>
+              <p> На рынке интернет-технологий</p>
+            </div>
+            <div class="services__element">
+              <div class="services__figures">
+                <p> 220<span></span></p>
+              </div>
+              <p> Реализованных проектов</p>
+            </div>
+            <div class="services__element">
+              <div class="services__figures">
+                <p> 5%<span></span></p>
+              </div>
+              <p> Конверсия наших лендингов</p>
+            </div>
+            <div class="services__element">
+              <div class="services__figures">
+                <p> 14<span>дней</span></p>
+              </div>
+              <p> Средний срок сдачи проекта</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="techlologies landing__technologies js-technologies">
+        <p class="content-h1">  Наши технологии</p>
+        <div class="container">
+          <ul class="techlologies__list">
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Мультилендинг</p>
+                <div class="techlologies__li-text js-li-text">
+                  <p> В рамках концепции Акоффа и Стэка, VIP-мероприятие традиционно<span class="bold">  стабилизирует ребрендинг.</span> Стратегия предоставления скидок и бонусов, не меняя концепции, изложенной выше, категорически допускает экспериментальный повторный контакт. Согласно последним исследованиям, изменение глобальной стратегии раскручивает бизнес-план. Выставка детерминирует коллективный бюджет на размещение.</p>
+                </div>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Seo оптимизация</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Тексты по Модели AIDCKA</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Low-cost траффик</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Адаптивность</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> А/В тестирование</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Сквозная веб аналитика</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> 2-х шаговая модель продаж</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Интергация с CRM</p>
+              </div>
+            </li>
+            <li><a class="js-li-bird" href="javascript:void(0)"></a>
+              <div class="techlologies__li-descript">
+                <p class="title"> Большая семантика и кластеризация MOAB, Метрика, поисковые подсказки</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section class="new-job landing__new-job">
+        <p class="content-h1">  Примеры работ</p>
+        <div class="new-job__wrapper-job container">
+          <div class="new-job__left">
+            <div class="new-job__list first"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/job-1.jpg"/></div>
+                <p class="index-job-title">Премиум мебель, Москва</p>
+                <p class="type-job-title"> Разработка сайтов</p></a></div>
+            <div class="new-job__list"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/job-2.jpg"/></div>
+                <p class="index-job-title">Три толстяка, Тамбов</p>
+                <p class="type-job-title"> Фирменный стиль</p></a></div>
+            <div class="new-job__list"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/job-3.jpg"/></div>
+                <p class="index-job-title">Титан Групп, Москва</p>
+                <p class="type-job-title"> Продвижение сайтов</p></a></div>
+          </div>
+          <div class="new-job__right">
+            <div class="new-job__list"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/land-2.jpg"/></div>
+                <p class="index-job-title">КМГПроект, Казахстан</p>
+                <p class="type-job-title"> Разработка сайтов</p></a></div>
+            <div class="new-job__list"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/land-3.jpg"/></div>
+                <p class="index-job-title">Grizzli-airsoft, Москва</p>
+                <p class="type-job-title"> Разработка сайтов</p></a></div>
+            <div class="new-job__list last"><a href="javascript:void(0)">
+                <div class="new-job__wrap-img wrap-img"><img src="../img/land-1.jpg"/></div>
+                <p class="index-job-title">сеть мебельных салонов Юнион, Тамбов</p>
+                <p class="type-job-title"> Разработка сайтов</p></a></div>
+          </div>
+        </div>
+      </section>
+      <div class="new-job__order"><a class="order-button" href="javascript:void(0)">Оставить заявку</a></div>
+      <div class="tariff-plan landing__tariff-plan js-tariff-plan">
+        <p class="content-h1">  Тарифные планы</p>
+        <div class="container">
+          <div class="tariff-plan__list">
+            <div class="tariff-plan__item">
+              <div class="tariff-plan__inner">
+                <div class="tariff-plan__title">
+                  <p> Базовый</p>
+                </div>
+                <div class="tariff-plan__ul js-tariff-item">
+                  <ul>
+                    <li>
+                      <p> элемент 1 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 2</p>
+                    </li>
+                    <li>
+                      <p> элемент 3</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tariff-plan__price">
+                  <p>20 000
+                    <svg>
+                      <use xlink:href="#rouble"></use>
+                    </svg>
+                  </p><a class="order-button" href="javascript:void(0)">Заказать сайт</a>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-plan__item">
+              <div class="tariff-plan__inner">
+                <div class="tariff-plan__title">
+                  <p> Стандарт</p>
+                </div>
+                <div class="tariff-plan__ul js-tariff-item">
+                  <ul>
+                    <li>
+                      <p> элемент 1 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 2</p>
+                    </li>
+                    <li>
+                      <p> элемент 3</p>
+                    </li>
+                    <li>
+                      <p> элемент 4</p>
+                    </li>
+                    <li>
+                      <p> элемент 5 длинный в две строки</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tariff-plan__price">
+                  <p>35 000
+                    <svg>
+                      <use xlink:href="#rouble"></use>
+                    </svg>
+                  </p><a class="order-button" href="javascript:void(0)">Заказать сайт</a>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-plan__item">
+              <div class="tariff-plan__inner">
+                <div class="tariff-plan__title">
+                  <p> Премиум</p>
+                </div>
+                <div class="tariff-plan__ul js-tariff-item">
+                  <ul>
+                    <li>
+                      <p> элемент 1 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 2</p>
+                    </li>
+                    <li>
+                      <p> элемент 3</p>
+                    </li>
+                    <li>
+                      <p> элемент 4</p>
+                    </li>
+                    <li>
+                      <p> элемент 5 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 6</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tariff-plan__price">
+                  <p>50 000
+                    <svg>
+                      <use xlink:href="#rouble"></use>
+                    </svg>
+                  </p><a class="order-button" href="javascript:void(0)">Заказать сайт</a>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-plan__item vip">
+              <div class="tariff-plan__inner">
+                <div class="tariff-plan__title">
+                  <p> VIP</p>
+                </div>
+                <div class="tariff-plan__ul js-tariff-item">
+                  <ul>
+                    <li>
+                      <p> элемент 1 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 2</p>
+                    </li>
+                    <li>
+                      <p> элемент 3</p>
+                    </li>
+                    <li>
+                      <p> элемент 4</p>
+                    </li>
+                    <li>
+                      <p> элемент 5 длинный в две строки</p>
+                    </li>
+                    <li>
+                      <p> элемент 6</p>
+                    </li>
+                    <li>
+                      <p> элемент 7</p>
+                    </li>
+                    <li>
+                      <p> элемент 8</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tariff-plan__price">
+                  <p>200 000
+                    <svg>
+                      <use xlink:href="#rouble"></use>
+                    </svg>
+                  </p><a class="order-button" href="javascript:void(0)">Заказать сайт</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-we-are-working">
+        <p class="content-h1">  Как мы работаем?</p>
+        <div class="container">
+          <div class="how-we-are-working__points">
+            <div class="how-we-are-working__point one">
+              <p> 1</p><span> Название этапа</span>
+            </div>
+            <div class="how-we-are-working__point two">
+              <p> 2</p><span> Название этапа</span>
+            </div>
+            <div class="how-we-are-working__point three">
+              <p> 3</p><span> Название этапа</span>
+              <div class="how-we-are-working__circle"></div>
+              <svg class="how-we-are-working__circle" width="85" height="95" viewbox="0 0 85 95" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <symbol id="color-wheel">
+                  <circle r="42.5" fill="transparent" stroke="#d35414" cx="0" cy="45" stroke-width="3"></circle>
+                </symbol>
+                <use xlink:href="#color-wheel" x="0" y="0" width="50" height="95"></use>
+              </svg>
+            </div>
+            <div class="how-we-are-working__point five">
+              <p> 5</p><span> Название этапа</span>
+            </div>
+            <div class="how-we-are-working__point four">
+              <p> 4</p><span> Название этапа</span>
+            </div>
+            <div class="how-we-are-working__point six">
+              <p> 6</p><span> Название этапа</span>
+            </div>
+            <div class="how-we-are-working__point seven">
+              <p> 7</p><span> Название этапа</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="become-a-partner">
+        <div class="container">
+          <div class="become-a-partner__title">
+            <p> стань нашим<span> партнером!</span> получи<span class="percent">15%</span> с каждого заказа</p>
+          </div><a class="order-button become-a-partner__order" href="javascript:void(0)">Оставить заявку</a>
+        </div>
+      </div>
+      <div class="reviews">
+        <div class="container">
+          <p class="content-h1">  Отзывы</p>
+          <div class="reviews__list">
+            <div class="reviews__item">
+              <p> Позиционирование на рынке тормозит обществвенный медиавес неверно усиливает направленный маркетинг. Селекция бренда, не меняя концепции, изложенной выше, концентрирует рекламный бриф. Представляется логичным, что визуализация концепии ускоряет культурный побочный PR-эффект.</p>
+              <div class="reviews__company-name"> Название компании</div>
+              <div class="reviews__city">Город</div>
+            </div>
+            <div class="reviews__item">
+              <p> Медиапланирование, конечно, трансформирует имидж предприятия. Медиавес тормозит направленный маркетинг. Конкурентоспособность экономит продвигаемый анализ рыночных цен, не считаясь с затратами. До недавнего времени считалось, что побочный PR-эффект нейтрализует диктат потребителя.</p>
+              <div class="reviews__company-name"> Название компании</div>
+              <div class="reviews__city">Город</div>
+            </div>
+            <div class="reviews__item">
+              <p> Итак, ясно, что рекламное сообщество достижимо в разумные сроки. Узнавание бренда программирует потребительский метод изучения рынка, отвоевывая рыночный сегмент. Более того, узнавание бренда обуславливает социометрический ребрендинг. Анализ зарубежного опыта усиливает жизненный цикл продукции.</p>
+              <div class="reviews__company-name"> Название компании</div>
+              <div class="reviews__city">Город</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contacts">
+        <div class="container">
+          <div class="contacts__info"><img class="contacts__logo" src="../img/logo.png"/>
+            <div class="contacts__data">
+              <p><span class="number">+7<span> (495)</span> 215-51-36</span></p>
+              <div class="contacts__call-request call-animate">
+                <div class="top-animate"></div>
+                <div class="right-animate"></div>
+                <div class="bottom-animate"></div><a href="javascript:void(0)"> Заказать звонок</a>
+              </div>
+            </div>
+            <div class="contacts__location">
+              <p class="address"> г. Москва ул.Фадеева, д.5, ст. 1, 2 этаж</p>
+              <p class="mail"> msk@vedita.ru</p>
+            </div>
+          </div>
+        </div>
+        <div class="contacts__map"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=k4uIjErD5SZUM9iNS6cW9Ia7IDpKK-QZ&amp;width=100%&amp;height=540&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script></div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2016 Все права защищены</p>
+      </div>
+    </footer>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">  window.jQuery || document.write('<script src="../js/jquery-2.1.4.min.js"><\/script>');</script>
+    <script src="../js/libs/swiper/swiper.min.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

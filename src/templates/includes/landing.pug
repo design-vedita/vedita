@@ -1,0 +1,28 @@
+include services-landing
+include technologies
+include jobs
+include tariff-plan
+include how-we-are-working
+include become-a-partner
+include reviews
+include contacts
+
+
+mixin landing()
+    .content#content
+
+        +services-landing()
+
+        +techlologies()
+
+        +jobs('landing')
+
+        +tariff-plan()
+
+        +how-we-are-working()
+
+        +become-a-partner()
+
+        +reviews()
+
+        +contacts()

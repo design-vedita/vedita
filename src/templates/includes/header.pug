@@ -1,0 +1,126 @@
+include preloader.pug
+
+mixin header(page)
+   +preloader()
+
+   header.js-header
+      #menu.menu.js-menu
+         //- Левая часть меню
+         .menu__left.js-menu-left
+            .menu__logo
+               img(src="../img/logo.png")
+            .menu__contact-info
+               p: span.number +7
+                  span  (495)
+                  = ' '
+                  |  215-51-36
+                  span.mail   msk@vedita.ru
+               p: span.number +7
+                  span  (4752)
+                  = ' '
+                  |  48-54-15
+                  span.mail   info@vedita.ru
+               .menu__call.call-animate
+                  .header-top__top-animate.top-animate
+                  .header-top__right-animate.right-animate
+                  .header-top__bottom-animate.bottom-animate
+                  a(href="javascript:void(0)")  Заказать звонок
+               .menu__soc
+                  a(href="javascript:void(0)").facebook
+                     +svg('facebook', 'soc-ico-hide')
+                     +svg('facebook', 'soc-ico')
+                  a(href="javascript:void(0)").facebook
+                     +svg('vk', 'soc-ico-hide')
+                     +svg('vk', 'soc-ico')
+         //- Правая часть меню
+         .menu__right.js-menu-right
+            ul.js-hide-menu
+               li
+                  a(href="javascript:void(0)").active О нас
+                  +svg('arrow-menu','arrow-menu js-arrow-menu')
+                  .js-close
+                  ul.submenu.js-submenu
+                     li:   a(href="javascript:void(0)")  Отзывы
+                     li:   a(href="javascript:void(0)")  Вакансии
+                     li:   a(href="javascript:void(0)")  Аналитика
+                     li:   a(href="javascript:void(0)")  Публикации
+                     li:   a(href="javascript:void(0)")  Новости
+               li
+                  a(href="javascript:void(0)") Услуги
+                  +svg('arrow-menu','arrow-menu js-arrow-menu')
+                  .js-close
+                  ul.submenu.js-submenu
+                     li:   a(href="javascript:void(0)")  Создание сайтов
+                     li:   a(href="javascript:void(0)")  Продвижение сайтов
+                     li:   a(href="javascript:void(0)")  Создание сайтов
+               li:   a(href="javascript:void(0)")  Портфолио
+               li
+                  a(href="javascript:void(0)") 1С-Битрикс
+                  +svg('arrow-menu','arrow-menu js-arrow-menu')
+                  .js-close
+                  ul.submenu.js-submenu
+                     li:   a(href="javascript:void(0)")  Партнёр 1С-Битрикс
+                     li:   a(href="javascript:void(0)")  Семинары 1С-Битрикс
+                     li:   a(href="javascript:void(0)")  Партнёр 1С-Битрикс
+                     li:   a(href="javascript:void(0)")  Перевод сайтов на битрикс
+               li:   a(href="javascript:void(0)")  Контакты
+      //- Шапка сайта верх
+      .header-top.js-header-top
+         .header-top__logo
+            a(href="javascript:void(0)"): img(src="../img/logo.png")
+
+         if (page == 'landing')
+            = ' '
+         else
+            .header-top__burger-menu.js-transform
+               span
+               span
+               span
+         .header-top__call-request.call-animate
+            .header-top__top-animate.top-animate
+            .header-top__top-animate.right-animate
+            .header-top__top-animate.bottom-animate
+            a(href="javascript:void(0)")  Заказать звонок
+         .header-top__phone
+            p  +7
+               span  (495)
+               = ''
+               |  215-51-36
+      //- Шапка сайта слайдер
+      if (page == 'landing')
+         .header-bottom
+            .header-bottom__slider.swiper-container.js-slider
+               .header-bottom__swiper-wrapper.swiper-wrapper
+                  .header-bottom__slide.swiper-slide(style={'background-image': 'url(../img/landing.jpg)'})
+                     .header-bottom__center-slide
+                        p.header-bottom__title-slide  разработка лендингов
+                           span   под ключ
+                           |  рост продаж на
+                           span.percent   200%
+                        ul.header-bottom__list-services
+                           li
+                              .header-bottom__ico-slide.multilanding-ico
+                              p  Технологии мультилендинга
+                           li
+                              .header-bottom__ico-slide.complex
+                              p  Комплексное продвижение
+                           li
+                              .header-bottom__ico-slide.selling-texts
+                              p  Продающие тексты по формуле AIDCKA
+                           li
+                              .header-bottom__ico-slide.web-analitics
+                              p  Сквозная веб-аналитика
+                        a(href="javascript:void(0)").header-bottom__order  Оставить заявку
+            .rectangle-slider.js-rectangle-click
+               +svg('arrow-menu', 'arrow')
+      else
+         .header-bottom
+            .header-bottom__slider.swiper-container.js-slider
+               .header-bottom__swiper-wrapper.swiper-wrapper
+                  .header-bottom__slide.swiper-slide(style={'background-image':'url(../img/slide1.jpg)'})
+                  .header-bottom__slide.swiper-slide(style={'background-image':'url(../img/slide2.jpg)'})
+                  .header-bottom__slide.swiper-slide(style={'background-image':'url(../img/slide1.jpg)'})
+               .header-bottom__pagination.swiper-pagination
+            .rectangle-slider.js-rectangle-click
+               +svg('arrow-menu', 'arrow')
+

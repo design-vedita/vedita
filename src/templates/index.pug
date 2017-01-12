@@ -1,0 +1,27 @@
+extends includes/layout
+
+include includes/head
+include includes/header
+include includes/index
+include includes/footer
+include includes/menu-portfolio
+include includes/menu-landing
+include includes/scripts
+
+
+block head
+   +head('Главная')
+
+block content
+   +header()
+
+   +index()
+
+block footer
+
+   +footer()
+
+   //-+menu-portfolio()
+   //-+menu-landing()
+
+   +scripts()

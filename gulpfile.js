@@ -6,14 +6,18 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     rigger = require('gulp-rigger'),
     cssmin = require('gulp-minify-css'),
-    rimraf = require('rimraf'),
     browserSync = require("browser-sync"),
     autoprefixer = require('gulp-autoprefixer'),
     plumber = require('gulp-plumber'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
     inject = require('gulp-inject'),
-    spritesmith = require('gulp.spritesmith');
+    pug  = require('gulp-pug'),
+    newer = require('gulp-newer'),
+    remember = require('gulp-remember'),
+    paths = require('gulp-path'),
+    svgo = require('gulp-svgo'),
+    concat = require('gulp-concat');
 
 var path = {
     build: {
@@ -25,23 +29,25 @@ var path = {
     },
     src: {
         html: 'src/templates/*.html',
-        js: 'src/js/script.js',
+        js: 'src/js/*.js',
         style: 'src/css/style.less',
-        img: 'src/img/*.*',
+        img: 'src/img/*.{png,jpg,svg,gif,ico}',
         sprite: 'src/img/ico/*.*',
         fonts: 'src/fonts/**/*.*',
+        pug: 'src/templates/*.pug',
         svg: 'src/img/svg/*.svg',
         svg_html: 'src/templates/svg_template/svg.html',
         svg_dest: 'src/templates/blocks/'
     },
     watch: {
-        html: 'src/**/*.html',
+        //html: 'src/**/*.html',
         js: 'src/js/**/*.js',
         style: 'src/css/**/*.less',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*',
-        svg: 'src/img/svg/*.svg',
-        sprite: 'src/img/ico/*.*'
+        pug: 'src/templates/**/*.pug',
+        svg: 'src/img/svg/*.svg'
+        //sprite: 'src/img/ico/*.*'
     }
 };
 
@@ -64,7 +70,7 @@ var config = {
     logPrefix: "nikalun"
 };
 
-
+/*
 gulp.task('sprite', function() {
     var spriteData =
         gulp.src(path.src.sprite)
@@ -82,7 +88,7 @@ gulp.task('sprite', function() {
     spriteData.img.pipe(gulp.dest('./build/img/sprite'));
     spriteData.css.pipe(gulp.dest('./src/css/parts')); // путь, куда сохраняем стили
 });
-
+*/
 
 gulp.task('svgstore', function () {
     var svgs = gulp
@@ -104,25 +110,41 @@ gulp.task('webserver', function () {
     browserSync(config);
 });
 
-
+/*
 gulp.task('html:build', function () {
     gulp.src(path.src.html)
         .pipe(plumber())
         .pipe(rigger())
         .pipe(gulp.dest(path.build.html));
 });
+*/
+
+gulp.task('pug:build', function(){
+    gulp.src(path.src.pug)
+        .pipe(plumber())
+        .pipe(pug({
+            pretty: true
+        }))
+        .on('error', console.log)
+        .pipe(gulp.dest(path.build.html))
+});
 
 gulp.task('js:build', function () {
     gulp.src(path.src.js)
         .pipe(plumber())
         .pipe(rigger())
+        .pipe(concat('app.js'))
      //   .pipe(uglify())
         .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task('css:build', function () {
     gulp.src(path.src.style)
+        .pipe(newer(path.build.css))
         .pipe(plumber())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions']
+        }))
         .pipe(less({
             paths: ['src/css/'],
             compress: true
@@ -133,16 +155,19 @@ gulp.task('css:build', function () {
 
 gulp.task('image:build', function () {
     gulp.src(path.src.img)
+        .pipe(svgo())
+        .pipe(newer(path.build.img))
         .pipe(gulp.dest(path.build.img));
 });
 
 gulp.task('fonts:build', function () {
     gulp.src(path.src.fonts)
+        .pipe(newer(path.build.fonts))
         .pipe(gulp.dest(path.build.fonts));
 });
 
 gulp.task('build', [
-    'html:build',
+    'pug:build',
     'js:build',
     'css:build',
     'fonts:build',
@@ -151,11 +176,13 @@ gulp.task('build', [
 
 
 gulp.task('watch', function(){
-    watch([path.watch.html], function(event, cb) {
-        gulp.start('html:build');
+    watch([path.watch.pug], function(event, cb) {
+        gulp.start('pug:build');
     });
     watch([path.watch.style], function(event, cb) {
-        gulp.start('css:build');
+        gulp.start('css:build').on('unlink', function(filepath) {
+            remember.forget('css:build', paths.resolve(filepath));
+        });
     });
     watch([path.watch.js], function(event, cb) {
         gulp.start('js:build');
@@ -169,10 +196,7 @@ gulp.task('watch', function(){
     watch([path.watch.svg], function(event, cb) {
         gulp.start('svgstore');
     });
-    watch([path.watch.sprite], function(event, cb) {
-        gulp.start('sprite');
-    });
 });
 
 
-gulp.task('default', ['svgstore', 'build', 'webserver', 'watch', 'sprite']);
+gulp.task('default', ['watch', 'webserver', 'svgstore', 'build' ]);

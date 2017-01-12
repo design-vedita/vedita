@@ -1,0 +1,249 @@
+.services {
+
+	&.index__services {
+		padding-top: 35px;
+	}
+
+	&.landing__services {
+
+		.content-h1 {
+			font-size: 1.875em;
+			font-weight: 500;
+			line-height: 1.5em;
+			letter-spacing: 3px;
+		}
+
+		.services__element {
+			width: 25%;
+
+			@media (min-width: 460px) and (max-width: 767px) {
+				margin-bottom: 50px;
+				width: 50%;
+			}
+
+			@media (min-width: 240px) and (max-width: 459px) {
+				margin-bottom: 50px;
+				width: 100%;
+			}
+		}
+	}
+
+	&__wrapper {
+		width: 100%;
+		position: relative;
+		padding: 0 40px;
+		box-sizing: border-box;
+
+		@media (min-width: 240px) and (max-width: 1000px){
+
+			& {
+				padding: 0 20px;
+			}
+		}
+	}
+
+	&__list {
+		max-width: 1171px;
+		margin: 0 auto;
+		line-height: 0;
+		font-size: 1px;
+		padding-top: 55px;
+		box-sizing: border-box;
+
+		&:after {
+			width: 100%;
+			height: 0;
+			visibility: hidden;
+			overflow: hidden;
+			content: '';
+			display: inline-block;
+		}
+
+		@media  (min-width: 240px) and (max-width: 459px) {
+
+			& {
+				text-align: center;
+			}
+		}
+	}
+
+	&__element {
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 20%;
+		display: inline-block;
+		vertical-align: top;
+		margin-bottom: 20px;
+		line-height: normal;
+		box-sizing: border-box;
+
+		@media  (min-width: 240px) and (max-width: 459px) {
+
+			& {
+				width: 100%;
+			}
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		& p {
+			font-size: 1.3125rem; /* 21/16 */
+			line-height: 1.875rem; /* 30/16 */
+			font-family:  @condens_reg, sans-serif;
+			//margin-top: 31px;
+			margin-top: 18px;
+			color: #3d3556;
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
+
+	&__circle {
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		border: 3px #9fc187 solid;
+		text-align: center;
+		margin: 0 auto;
+
+		& img {
+			max-width: 60%;
+			padding-top: 20px;
+		}
+	}
+
+	&__figures {
+		margin-top: 38px;
+		color: #9fc187;
+
+		p {
+			margin-top: initial;
+			font: 103px/27px @condens_reg;
+			color: currentColor;
+		}
+
+		span {
+			font-size: 20px;
+			line-height: inherit;
+			font-family: inherit;
+			color: currentColor;
+		}
+	}
+
+	&__rectangle {
+		width: 0;
+		height: 0;
+		border-top: 100px solid transparent;
+		border-right: 111px solid #9fc187;
+		border-bottom: 100px solid transparent;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transition: border .5s ease;
+
+		@media (min-width: 240px) and (max-width: 1000px){
+
+			& {
+				position: static;
+				border: 0;
+				width: 100%;
+				min-height: 30px;
+				height: 100%;
+				margin-top: 66px;
+				transition: border .5s ease;
+			}
+		}
+
+		a {
+			display: block;
+			height: 198px;
+			margin-top: -98px;
+			width: 111px;
+
+			@media (min-width: 240px) and (max-width: 1000px){
+
+				& {
+					margin: 0;
+					padding: 0;
+					width: auto;
+					height: auto;
+					display: inline;
+					text-decoration: none;
+				}
+			}
+		}
+
+		p {
+			transform: rotate(-90deg);
+			font: 1.125em/1.2em @condens_reg, sans-serif; /* 18px|23px */
+			text-transform: uppercase;
+			color: #fff;
+			left: 17px;
+			top: -21px;
+			text-align: center;
+			width: 60px;
+			position: absolute;
+			letter-spacing: 1.5px;
+
+			@media (min-width: 240px) and (max-width: 1000px){
+
+				& {
+					transform: rotate(0);
+					position: relative;
+					width: auto;
+					text-align: center;
+					color: #d35414;
+					transition: color .5s ease;
+					top: 0;
+					left: 0;
+					padding-bottom: 15px;
+
+					&:before {
+						content: '';
+						display: block;
+						width: 67px;
+						height: 1px;
+						background-color: #d35414;
+						transition: background .5s ease;
+						position: absolute;
+						left: calc(~'50% - 33px');
+						bottom: 0;
+					}
+				}
+			}
+		}
+
+		.arrow {
+			position: absolute;
+			right: -105px;
+			width: 33px;
+			height: 33px;
+			transform: rotate(-90deg);
+			fill: #fff;
+			top: -17px;
+			transition: width .5s ease, right .5s ease, height .5s ease;
+
+			@media (min-width: 240px) and (max-width: 1000px){
+
+				& {
+					display: none;
+				}
+			}
+		}
+
+		&:hover {
+			border-right-color: #d35414;
+			transition: border .5s ease;
+			will-change: border;
+		}
+
+		&:hover .arrow {
+			width: 37px;
+			height: 37px;
+			transition: width .5s ease, right .5s ease, height .5s ease;
+			will-change: width, right, height;
+		}
+	}
+}

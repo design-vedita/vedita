@@ -1,0 +1,11 @@
+mixin menu-landing()
+
+   - var landing = ['Спецпредложения','Основные услуги','О нас','Новые работы','Заказать сайт'];
+   //- Лендинг плавающее меню
+   .menu-landing
+      ul
+         each li in landing
+            li:  a(href="javascript:void(0)")= li
+      .menu-landing__up-page.js-up-page
+         +svg('arrow-menu','arrow-up')
+

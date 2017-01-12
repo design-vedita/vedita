@@ -1,0 +1,91 @@
+.contacts {
+	position: relative;
+	overflow: hidden;
+
+	&__info {
+		padding-top: 98px;
+		padding-bottom: 83px;
+		width: 395px;
+	}
+
+	&__logo {
+		padding-left: 10px;
+		width: 100%;
+		height: auto;
+	}
+
+	&__data {
+		margin-top: 138px;
+
+		p {
+			float: left;
+			color: #3d3556;
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		span {
+
+			&.number {
+				font: 1.75em @condens_reg, sans-serif; /* 28/16 */
+			}
+
+			span {
+				color: #d35414;
+			}
+		}
+	}
+
+	&__call-request {
+		position: relative;
+		margin-top: -3px;
+		float: right;
+		width: 172px;
+		height: 47px;
+		text-align: center;
+	}
+
+	&__location {
+		margin-top: 15px;
+		font: 1.125em @ubuntu;
+		color: #3d3556;
+
+		p {
+			padding-left: 23px;
+			font: inherit;
+		}
+
+		.address {
+			margin-bottom: 6px;
+			background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/location.svg');
+			background-size: 14px 16px;
+			background-position: left center;
+			background-repeat: no-repeat;
+		}
+
+		.mail {
+			background-image: data-uri('image/svg+xml;charset=UTF-8', '../img/mail.svg');
+			background-size: 13px 15px;
+			background-position: left center;
+			background-repeat: no-repeat;
+		}
+	}
+
+	&__map {
+		position: absolute;
+		right: 0;
+		top: 0;
+		display: block;
+		width: 55%;
+		height: 100%;
+
+		@media (max-width: 999px) {
+			position: static;
+			width: 100%;
+		}
+	}
+}

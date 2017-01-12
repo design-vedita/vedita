@@ -1,0 +1,39 @@
+mixin how-we-are-working()
+   .how-we-are-working
+      p.content-h1   Как мы работаем?
+      .container
+         .how-we-are-working__points
+            .how-we-are-working__point.one
+               p  1
+               span  Название этапа
+            .how-we-are-working__point.two
+               p  2
+               span  Название этапа
+            .how-we-are-working__point.three
+               p  3
+               span  Название этапа
+               .how-we-are-working__circle
+               svg(  width=85
+                     height=95
+                     viewbox="0 0 85 95"
+                     version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                  ).how-we-are-working__circle
+                  symbol#color-wheel
+                     circle(r=42.5 fill="transparent" stroke="#d35414" cx="0" cy="45" stroke-width="3")
+                  use(xlink:href="#color-wheel" x="0" y="0" width="50" height=95)
+
+
+            .how-we-are-working__point.five
+               p  5
+               span  Название этапа
+               //-.how-we-are-working__circle
+            .how-we-are-working__point.four
+               p  4
+               span  Название этапа
+            .how-we-are-working__point.six
+               p  6
+               span  Название этапа
+            .how-we-are-working__point.seven
+               p  7
+               span  Название этапа

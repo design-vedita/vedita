@@ -1,0 +1,14 @@
+include services.pug
+include index-content.pug
+include jobs.pug
+
+mixin index()
+   .content#content
+      //- Скрытый блок при открытии меню
+      .content__hide-block.js-hide-block
+         .left-percent.percent
+         .right-percent.percent
+
+      +services()
+      +index-content()
+      +jobs('index')

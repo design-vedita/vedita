@@ -1,10 +1,67 @@
 // fixed bottom menu portfolio
 .portfolio-links-p () {
-  display: inline-block;
-  vertical-align: middle;
-  font: .8125rem @ubuntu;
-  color: rgba(255, 255, 255, .7);
-  text-transform: uppercase;
-  word-wrap: break-word;
-  width: 80%;
+	display: inline-block;
+	vertical-align: middle;
+	font: .8125rem @ubuntu;
+	color: rgba(255, 255, 255, .7);
+	text-transform: uppercase;
+	word-wrap: break-word;
+	width: 80%;
+}
+
+.order( @color: #89ad70; @padding: 14px 103px; @size: 1.25rem;) {
+	padding: @padding;
+	display: inline-block;
+	font: @size/1.25rem @condens_reg;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: @color;
+	border: 2px @color solid;
+	box-sizing: border-box;
+	transition-property: border-color, background-color, color;
+	transition-duration: .3s, .3s, .3s;
+	transition-timing-function: linear;
+
+	&:hover {
+		border-color: transparent;
+		background-color: @color;
+		color: #fff;
+	}
+}
+
+.h1(@color-line: #9fc187;@color-text: #3d3556;) {
+	text-transform: uppercase;
+	font: 2.625em @ubuntu, sans-serif; /* 42/16 */
+	letter-spacing: 4.5px;
+	color: @color-text;
+	text-align: center;
+	position: relative;
+	padding-bottom: 23px;
+
+	@media (min-width: 460px) and (max-width: 767px) {
+
+		& {
+			font-size: 2.25em; /* 36px */
+		}
+	}
+
+	@media (min-width: 240px) and (max-width: 559px) {
+
+		& {
+			font-size: 1.625em; /* 26px */
+		}
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 50%;
+		width: 218px;
+		margin-left: -109px;
+		height: 1px;
+		background-color: @color-line;
+		bottom: 0;
+
+	}
 }

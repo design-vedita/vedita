@@ -1,0 +1,30 @@
+mixin services()
+   //-   Список услуг
+   section.services.index__services
+      p.content-h1   Наши основные услуги
+      .services__wrapper
+         .services__list
+            .services__element
+               .services__circle
+                  img(src="../img/website-development.png" alt="")
+               p  Создание сайтов
+            .services__element
+               .services__circle
+                  img(src="../img/support-sites.png" alt="")
+               p  Поддержка сайтов
+            .services__element
+               .services__circle
+                  img(src="../img/seo.png" alt="")
+               p  Поисковое продвижение
+            .services__element
+               .services__circle
+                  img(src="../img/yandex-direct.png" alt="")
+               p  Контекстная реклама
+            .services__element
+               .services__circle
+                  img(src="../img/smm.png" alt="")
+               p  SMM
+         .services__rectangle.rectangle-services
+            a(href="javascript:void(0)")
+               p  Все услуги
+               +svg('arrow-menu', 'arrow')

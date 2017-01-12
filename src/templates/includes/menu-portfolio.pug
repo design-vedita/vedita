@@ -1,0 +1,26 @@
+mixin menu-portfolio()
+   //- Портфолио плавающее меню
+   .menu-portfolio
+      .menu-portfolio__all-job
+         a(href="javascript:void(0)")
+            .menu-portfolio__all-job__wrapper
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+               .menu-portfolio__all-job__wrapper__circle
+      .menu-portfolio__wrap-links
+         .menu-portfolio__wrap-links__prev-job.links
+            a(href="javascript:void(0)")
+               p  Название предыдущей работы
+               +svg('arrow-menu','arrow arrow-prev')
+         .menu-portfolio__wrap-links__next-job.links
+            a(href="javascript:void(0)")
+               +svg('arrow-menu', 'arrow-next arrow')
+               p  Название следующей работы
+      .menu-portfolio__up-page.js-up-page
+         +svg('arrow-menu', 'arrow-up')

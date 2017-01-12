@@ -1,291 +1,360 @@
+var App = {
+    doc: $(document),
+    win: $(window),
+    body: $('body'),
+    htmlTag: $('html'),
+    is_touch: $('html').hasClass('touch'),
+    container: $(window),
+    scroll_container: $('html').add($('body')),
+    is_touch_device: Modernizr.touch && (typeof(window.orientation) !== 'undefined'),
+    modules: {},
+    is_ie: window.navigator.userAgent.indexOf("MSIE") > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./),
+    is_ff: navigator.userAgent.indexOf("Firefox") !== -1,
+    is_safari: navigator.userAgent.indexOf("Safari") !== -1,
+    is_chr: navigator.userAgent.indexOf("Chrome") !== -1,
+    is_op: navigator.userAgent.indexOf("Opera") !== -1,
+    is_android: navigator.userAgent.indexOf("Android") !== -1,
+    is_mac: navigator.userAgent.indexOf("Mac") !== -1,
+    is_ios: navigator.userAgent.match(/iPhone|iPad|iPod/i),
+    is_edge: navigator.userAgent.indexOf("Edge") !== -1,
+    update_delay: 400
+   // debug: false
+};
+
+(function(App){
+
+    App.doc.ready(function() {
+
+        // Добавляем браузерные классы
+        if (App.is_ff) {
+            App.htmlTag.addClass('ff');
+        }
+        if (App.is_chr) {
+            App.htmlTag.addClass('chrome');
+        }
+        if (App.is_ie) {
+            App.htmlTag.addClass('ie');
+        }
+        if (App.is_android) {
+            App.htmlTag.addClass('android');
+        }
+        if (App.is_mac) {
+            App.htmlTag.addClass('mac');
+        }
+        if (App.is_safari) {
+            App.htmlTag.addClass('safari');
+        }
+        if (App.is_ios) {
+            App.htmlTag.addClass('ios');
+        }
+
+        if (App.is_edge) {
+            App.htmlTag.addClass('edge');
+        }
+
+        App.modules.slider = new App.Slider();
+        App.modules.preloader = new App.Preloader();
+        App.modules.menu = new App.Menu();
+        App.modules.hideblock = new App.HideBlock();
+
+    });
+
+}(App));
+
+App.Slider = (function(App){
+    "use strict";
+
+    var module = function(){
+        this.options = {
+            self: '.js-header'
+        };
+        this.$root = $(this.options.self);
+
+        this.init();
+    };
+
+    module.prototype = {
+        constructor: module,
+        init: function() {
+
+            this.$slider = $('.js-slider', this.$root);
+            this.$rectangle = $('.js-rectangle-click', this.$root);
+            this.$menu = $('.js-header-top', this.$root);
+
+            this.init_slider();
+            this.size_slider();
+
+            App.win.on('resize', $.proxy(this.size_slider, this));
+
+            this.$rectangle.on('click', $.proxy(this.rectangle_slider, this));
+
+        },
+        init_slider: function(){
+            // Слайдер на главной
+            var swiper = new Swiper( this.$slider , {
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                direction: 'vertical'
+            });
+        },
+        size_slider: function() {
+            var clientHeight = document.documentElement.clientHeight;
+            var sum = this.$rectangle.outerHeight() + this.$menu.outerHeight();
+            this.$slider.css({'height': clientHeight - sum + 'px'});
+        },
+        rectangle_slider: function(){
+            var clientHeight = document.documentElement.clientHeight;
+
+            $("body,html").animate({
+                scrollTop: clientHeight
+            }, 500);
+            return false;
+        }
+    };
+
+    return module;
+
+}(App));
+
+App.Preloader = (function(App){
+    "use strict";
+
+    var module = function(){
+        this.options = {
+            self: '.page-preloader'
+        };
+        this.$root = $(this.options.self);
+
+        this.init();
+    };
+
+    module.prototype = {
+        constructor: module,
+        init: function(){
+
+            App.win.on('load', $.proxy(this.preloader, this));
+
+        },
+        preloader: function(){
+            // Прелоадер
+            this.$spinner = $('.spinner', this.$root);
+            this.$spinner.fadeOut();
+            this.$root.addClass('slow');
+        }
+    };
+
+    return module;
+
+}(App));
+
+App.Menu = (function(App){
+    "use strict";
+
+    var module = function(){
+        this.options = {
+            self: '.js-header'
+        };
+        this.$root = $(this.options.self);
+
+        this.init();
+    };
+
+    module.prototype = {
+        constructor: module,
+        init: function() {
+
+            this.$menu = $('.js-menu', this.$root);
+            this.$submenu = $('.js-submenu', this.$root);
+            this.$menuRight = $('.js-menu-right', this.$root);
+            this.$menuLeft = $('.js-menu-left', this.$root);
+            this.$headerTop = $('.js-header-top', this.$root);
+            this.$arrowOpen = $('.js-arrow-menu', this.$root);
+            this.$arrowClose = $('.js-close', this.$root);
+            this.$hideMenu = $('.js-hide-menu li', this.$root);
+            this.$content = $('#content');
+            this.$footer = $('#footer');
+            this.hideblock = $('.js-hide-block');
+            this.$burger = $('.js-transform', this.$root);
+
+            this.max_index();
+            this.height_open_menu();
+            this.float_menu();
+
+            App.win.on('resize', $.proxy(this.height_open_menu, this));
+            App.win.on('resize', $.proxy(this.set_size_hide_content, this));
+            App.win.on('scroll', $.proxy(this.float_menu, this));
+
+            this.$arrowOpen.on('click', $.proxy(this.bird_open, this));
+            this.$arrowClose.on('click', $.proxy(this.bird_close, this));
+            this.$burger.on('click', $.proxy(this.open_menu, this));
+
+        },
+        max_index: function(){
+            /**
+             * В массив получаем точную координату нижнего угла для каждого submenu, это нам даёт понять, насколько ниже нашей области просмотра может быть выпадающее меню.
+             * Добавляем 2000, т.к. на "-" это расстояние мы прячем наше меню и также добавляем высоту нашего submenu
+             */
+            var arr = [];
+            $(this.$submenu).each(function(i){
+                arr[i] = $(this).offset().top + 2000 + $(this).outerHeight(true);
+            });
+
+            this.max = Math.max.apply(0, arr);
+        },
+        height_open_menu: function() {
+            // Высота открытого меню
+            var clientHeight  = document.documentElement.clientHeight,
+                clientWidth = document.documentElement.clientWidth;
+
+            console.log('макс - ' + this.max);
+            console.log('клиент - ' + clientHeight);
+
+            if (clientHeight < this.max) {
+
+                //Если высота окна больше максильмальной высоты submenu, то значение высоты правого блока меню и меню = высоте клиента
+                this.$menuRight.css({'height': this.max + 'px'});
+                this.$menu.css({'height': clientHeight + 'px'});
+
+                (clientWidth > 1000) ? this.$menuLeft.css({'top':0}) : this.$menuLeft.css({'top': this.max + 'px'});
+
+                // У больших экранов делаем левый блок top 0, чтобы не убегал вниз, иначе его делам под правым блоком
+            } else {
+
+                // Иначе правый равен высоте максимального, а само меню клиенту (подтягиваем до размера экрана)
+                this.$menuRight.css({'height': this.max + 'px'});
+                this.$menu.css({'height': clientHeight + 'px'});
+
+                // У больших экранов делаем левый блок высотой по максимальному submenu, иначе по высоте клиента
+                if (clientWidth > 1000) {
+                    this.$menuLeft.css({'height': clientHeight + 'px','top': 0});
+                    this.$menuRight.css({'height': clientHeight + 'px'});
+                } else {
+                    this.$menuLeft.css({'height': clientHeight + 'px', 'top': this.max + 'px'});
+                }
+            }
+        },
+        float_menu: function(){
+
+            // Прилипает к верху экрана при прокрутке
+            var scrolled = window.pageYOffset || document.documentElement.scrollTop,
+                $headerHeight = this.$headerTop.outerHeight(true);
+
+            if (scrolled >= $headerHeight && !this.$headerTop.hasClass('scrolled')) {
+                this.$headerTop.addClass('float-menu');
+                this.$root.css({'padding-top': $headerHeight + 'px'});
+            } else {
+                this.$headerTop.removeClass('float-menu');
+                this.$root.css({'padding-top': ''});
+            }
+        },
+        bird_open: function(e) {
+            var parent =  e.target.parentNode;
+
+            this.$hideMenu.each(function(){
+                $(this).removeClass('show-before');
+            });
+
+            $(parent).addClass('show-before');
+        },
+        bird_close: function(e) {
+            var parent = e.target.parentNode;
+
+            $(parent).removeClass('show-before');
+        },
+        set_size_hide_content: function(){
+
+            var $contentHeight = this.$content.outerHeight(true),
+                $footerHeight = this.$footer.outerHeight(true);
+
+            var sum = $contentHeight + $footerHeight;
+
+            (this.$content.hasClass('menu--open')) ? this.hideblock.css({'height': sum + 'px'}) : this.hideblock.css({'height': ''});
+        },
+        open_menu: function(e){
+
+            var _this = e.currentTarget;
+
+            $(_this).toggleClass('menu--open');
+            this.$content.toggleClass('menu--open');
+            this.$menu.toggleClass('menu-show');
+            this.$headerTop
+                    .removeClass('float-menu')
+                    .toggleClass('scrolled');
+            this.hideblock.css({'z-index': 7});
+
+            if (!$(_this).hasClass('menu--open')) {
+                this.hideblock.css({'z-index': '-1'});
+            }
+
+            $("body,html").animate({
+                scrollTop: 0
+            }, 500);
+
+            return false;
+
+            this.set_size_hide_content();
+        }
+    };
+
+    return module;
+
+}(App));
+
+App.HideBlock = (function(App){
+    "use strict";
+
+    var module = function(){
+        this.options = {
+            self: '.js-hide-block'
+        };
+        this.$root = $(this.options.self);
+
+        this.init();
+    };
+
+    module.prototype = {
+        constructor: module,
+        init: function(){
+
+            this.rightHide = $('.right-percent', this.$root);
+            this.leftHide = $('.left-percent', this.$root);
+
+            this.percent_block();
+
+            App.win.on('resize', $.proxy(this.percent_block, this));
+        },
+        percent_block: function() {
+            // Прячем контент при открытом меню
+            var clientWidth = document.documentElement.clientWidth;
+
+            if (clientWidth <= 1960 && clientWidth > 1000) {
+                this.rightHide.css({'right': 0, 'display': 'block'});
+                this.leftHide.css({'display': 'block'});
+            } else if (clientWidth <= 1000 && clientWidth >= 0) {
+                this.leftHide.css({'width':'100%'});
+                this.rightHide.css({'display':'none'});
+            }
+        }
+    };
+
+    return module;
+
+}(App));
+
 (function () {
     "use strict";
 
     $(function(){
 
-        var menu = document.getElementById('menu'), // get the menu itself;
-            clientHeight = document.documentElement.clientHeight,
-            clientWidth = document.documentElement.clientWidth,
-            content = document.getElementById('content'),
-            footer = document.getElementById('footer'),
-            hideBlock = document.getElementsByClassName('js-hide-block')[0],
-            rectangle = document.getElementsByClassName('js-rectangle-click')[0],
-            topMenu = document.getElementsByClassName('js-header-top')[0];
-
-
-        /*--------------------------------------slider index--------------------------------------*/
-
-        function slider_size(clientHeight, rectangle, topMenu) {
-            var slider = document.getElementsByClassName('js-slider')[0];
-
-
-            var sum = rectangle.offsetHeight + topMenu.offsetHeight; // sum height rectagle and header top-menu
-
-            slider.style.height = (clientHeight - sum) + 'px';
-        }
-
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            direction: 'vertical'
-        });
-
-        /*---------------------------------------------------------------------------------------*/
-
-       /*-----------------preloader--------------------*/
-        $(window).on('load', function () {
-            var $preloader = $('.page-preloader'),
-                $spinner   = $preloader.find('.spinner');
-            $spinner.fadeOut();
-            $preloader.addClass('slow');
-        });
-
-        /*-------------------------------------------height open menu-----------------------------------------------*/
-        function setClient(max, menu, clientHeight, clientWidth) {
-            var menu_right = document.getElementsByClassName('js-menu-right')[0],
-                menu_left = document.getElementsByClassName('js-menu-left')[0];
-
-            if (clientHeight < max) {
-                menu_right.style.cssText = 'height: '+ max + 'px';
-                menu.style.cssText = 'height: '+ clientHeight + 'px';
-
-                /**
-                 * ���� ������ ���� ������ �������������� ������ submenu, �� �������� ������ ������� ����� ���� � ���� = ������ �������
-                 * If the height is greater than the maximum height of the window submenu, that is the height of the right block menu and equal to the height of the client
-                 */
-
-                (clientWidth > 1000) ? menu_left.style.top = '0px' : menu_left.style.top = max + 'px';
-                /*
-                 * � ������� ������� ������ ����� ���� top 0, ����� �� ������ ����, ����� ��� ����� ��� ������ ������
-                 * Larger screens do top left block 0, not to run away down, otherwise it works under the right unit
-                 * */
-
-            } else {
-                menu_right.style.cssText = 'height: '+ max + 'px';
-                menu.style.cssText = 'height: '+ clientHeight + 'px';
-
-                /**
-                 * ����� ������ ����� ������ �������������, � ���� ���� ������� (����������� �� ������� ������)
-                 * Otherwise, the right is the maximum altitude, and the menu itself to the client (tightens up the screen size)
-                 */
-
-                 if (clientWidth > 1000) {
-                     menu_left.style.cssText = 'height: ' + clientHeight + 'px; \ top: 0';
-                     menu_right.style.cssText = 'height: ' + clientHeight + 'px';
-                 } else {
-                     menu_left.style.cssText = 'height: '+ clientHeight + 'px; \ top: ' + max +'px';
-                 }
-                /**
-                 * � ������� ������� ������ ����� ���� ������� �� ������������� submenu, ����� �� ������ �������
-                 * Larger screens make the left block of the maximum height submenu, otherwise the height of the client
-                 **/
-            }
-        }
-
-        /*-------------------------------- maximum list------------------------------------*/
-        function getOffsetRect(elem) {
-            /**
-             *   �������� ������ ������ � ����� ��� ��������
-             *   We get the top margin and the left of the item
-             **/
-
-            var box = elem.getBoundingClientRect()
-
-            var body = document.body;
-            var docElem = document.documentElement;
-
-            var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
-            var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
-
-            var clientTop = docElem.clientTop || body.clientTop || 0;
-            var clientLeft = docElem.clientLeft || body.clientLeft || 0;
-
-            var top  = box.top +  scrollTop - clientTop;
-            var left = box.left + scrollLeft - clientLeft;
-
-            return { top: Math.round(top), left: Math.round(left) }
-        }
-
-        var arr = Array(),
-            submenu_li = document.getElementsByClassName('submenu'); //get all submenu
-        for (var i = 0; i < submenu_li.length; i++) {
-            arr[i] = getOffsetRect(submenu_li[i]).top + 2000 + submenu_li[i].offsetHeight;
-            /**
-             * � ������ �������� ������ ���������� ������� ���� ��� ������� submenu, ��� ��� ���� ������, ��������� ���� ����� ������� ��������� ����� ���� ���������� ����.
-             * ��������� 2000, �.�. �� "-" ��� ���������� �� ������ ���� ���� � ����� ��������� ������ ������ submenu
-             *
-             * The array to get the exact coordinates of the lower corner of each submenu, it allows us to understand how our viewing area below can be a drop-down menu.
-             * Adding 2000 as on "-" the distance we hide our menu and also add the height of our submenu
-             **/
-        }
-        var max = Math.max.apply(0, arr); // max value in array
-
-        /*----------------------------------------------------------------------------------------*/
-
-
-
-        /*--------------------------------hide content if open menu-----------------------------*/
-
-        function hideShowPercentBlock(clientWidth) {
-            var right_hide = document.getElementsByClassName('right-percent')[0],
-                left_hide = document.getElementsByClassName('left-percent')[0];
-
-                if (clientWidth <= 1960 && clientWidth > 1000) {
-                    right_hide.style.right = '0';
-                    right_hide.style.display = 'block';
-                    left_hide.style.display = 'block';
-                } else if (clientWidth <= 1000 && clientWidth >= 0 ) {
-                    left_hide.style.width = '100%';
-                    right_hide.style.display = 'none';
-                }
-        }
-
-        /*-----------------------------------------------------------------------------------*/
-
-        /**/
-            function floatingMenu() {
-                var scrolled = window.pageYOffset || document.documentElement.scrollTop,
-                    header = document.getElementsByClassName('js-header-top')[0],
-                    header_height = header.offsetHeight;
-
-                    if ( scrolled >= header_height && !header.classList.contains('scrolled')) {
-                        header.classList.add('float-menu');
-                    } else {
-                        header.classList.remove('float-menu');
-                    }
-
-
-            }
-        /**/
--
-        /*--------------------------------------function call--------------------------------*/
-
-        setClient(max, menu, clientHeight, clientWidth);
-        slider_size(clientHeight, rectangle, topMenu);
-        hideShowPercentBlock(clientWidth);
-        setSizeHideContent(content, footer);
-        rectangleClick(clientHeight);
-
-        window.onload = function(){
-
-            floatingMenu();
-
-            window.onscroll = function() {
-                floatingMenu();
-            }
-        }
-
-
-        window.onresize = function() {
-            var clientHeight = document.documentElement.clientHeight,
-                clientWidth = document.documentElement.clientWidth,
-                content = document.getElementById('content'),
-                rectangle = document.getElementsByClassName('js-rectangle-click')[0],
-                topMenu = document.getElementsByClassName('js-header-top')[0];
-
-                slider_size(clientHeight, rectangle, topMenu);
-                setClient(max, menu, clientHeight, clientWidth);
-                setSizeHideContent(content, footer);
-                hideShowPercentBlock(clientWidth);
-        }
-
-
-
-
-
-        /*----------------------------------------------------------------------------------*/
-
-
-        /*-------------------------------click on bird in hide-menu------------------------*/
-
-        $('.js-arrow-menu').on('click', function(){
-            var $parent = $(this).parent(),
-                $menu_hide = $('.js-hide-menu li');
-
-            // We close everything except this
-            $($menu_hide).each(function(){
-                $(this).removeClass('show-before');
-            });
-
-            $parent.addClass('show-before');
-        });
-            // close this menu item
-        $('.js-close').click(function(){
-            var $parent = $(this).parent();
-            $parent.removeClass('show-before');
-        });
-
-        /*-------------------------------------------------------------------------------*/
-
-        /*--------------------------------slider rectangle click-------------------------*/
-        function rectangleClick(clientHeight) {
-            var $rectangle = $('.js-rectangle-click');
-
-            $($rectangle).click(function (){
-                $("body,html").animate({
-                    scrollTop: clientHeight
-                }, 500);
-                return false;
-            });
-        }
-
-        /*-------------------------------------------------------------------------------*/
-
         /*---------------------------portfolio click arrow top---------------------------*/
-            var portfolio_top = document.getElementsByClassName('js-up-page')[0];
+        var portfolio_top = document.getElementsByClassName('js-up-page')[0];
 
-            $(portfolio_top).click(function (){
-                $("body,html").animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-        /*-------------------------------------------------------------------------------*/
-
-
-        /*-------------------------------------visible menu--------------------------------------*/
-
-        function setSizeHideContent(content, footer) {
-            var content_height = content.offsetHeight, //get height content
-                footer_height = footer.offsetHeight; //get height footer
-
-            var sum = content_height + footer_height;
-
-
-
-            if (content.classList.contains('menu--open')) {
-                hideBlock.style.height = sum + 'px'; // if open menu hide block height = height content + height footer
-            } else {
-                hideBlock.style.height = ''; // else auto
-            }
-
-        }
-
-        var burger = document.getElementsByClassName('js-transform')[0], //get button menu
-            header_top  = document.getElementsByClassName('js-header-top')[0];
-
-        burger.onclick = function(){
-            burger.classList.toggle('menu--open');
-            content.classList.toggle('menu--open');
-            menu.classList.toggle('menu-show');
-            hideBlock = document.getElementsByClassName('js-hide-block')[0];
-            header_top.classList.remove('float-menu');
-            header_top.classList.toggle('scrolled'); // add/remove class scrolled
-
-            hideBlock.style.zIndex = '7';
-
-            if(!burger.classList.contains('menu--open')) {
-                hideBlock.style.zIndex = '-1';
-            }
-
-
+        $(portfolio_top).click(function (){
             $("body,html").animate({
                 scrollTop: 0
-            }, 500);
+            }, 800);
             return false;
+        });
 
-            setSizeHideContent(content, footer);
-        }
-        /*---------------------------------------------------------------------------------------*/
     });
 }());

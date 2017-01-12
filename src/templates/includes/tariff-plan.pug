@@ -1,0 +1,69 @@
+mixin tariff-plan()
+   .tariff-plan.landing__tariff-plan.js-tariff-plan
+      p.content-h1   Тарифные планы
+      .container
+         .tariff-plan__list
+            .tariff-plan__item
+               .tariff-plan__inner
+                  .tariff-plan__title
+                     p  Базовый
+                  .tariff-plan__ul.js-tariff-item
+                     ul
+                        li:   p  элемент 1 длинный в две строки
+                        li:   p  элемент 2
+                        li:   p  элемент 3
+                  .tariff-plan__price
+                     p 20 000
+                        +svg('rouble')
+                     a(href="javascript:void(0)").order-button Заказать сайт
+            .tariff-plan__item
+               .tariff-plan__inner
+                  .tariff-plan__title
+                     p  Стандарт
+                  .tariff-plan__ul.js-tariff-item
+                     ul
+                        li:   p  элемент 1 длинный в две строки
+                        li:   p  элемент 2
+                        li:   p  элемент 3
+                        li:   p  элемент 4
+                        li:   p  элемент 5 длинный в две строки
+                  .tariff-plan__price
+                     p 35 000
+                        +svg('rouble')
+                     a(href="javascript:void(0)").order-button Заказать сайт
+
+            .tariff-plan__item
+               .tariff-plan__inner
+                  .tariff-plan__title
+                     p  Премиум
+                  .tariff-plan__ul.js-tariff-item
+                     ul
+                        li:   p  элемент 1 длинный в две строки
+                        li:   p  элемент 2
+                        li:   p  элемент 3
+                        li:   p  элемент 4
+                        li:   p  элемент 5 длинный в две строки
+                        li:   p  элемент 6
+                  .tariff-plan__price
+                     p 50 000
+                        +svg('rouble')
+                     a(href="javascript:void(0)").order-button Заказать сайт
+
+            .tariff-plan__item.vip
+               .tariff-plan__inner
+                  .tariff-plan__title
+                     p  VIP
+                  .tariff-plan__ul.js-tariff-item
+                     ul
+                        li:   p  элемент 1 длинный в две строки
+                        li:   p  элемент 2
+                        li:   p  элемент 3
+                        li:   p  элемент 4
+                        li:   p  элемент 5 длинный в две строки
+                        li:   p  элемент 6
+                        li:   p  элемент 7
+                        li:   p  элемент 8
+                  .tariff-plan__price
+                     p 200 000
+                        +svg('rouble')
+                     a(href="javascript:void(0)").order-button Заказать сайт

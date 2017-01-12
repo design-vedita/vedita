@@ -1,0 +1,56 @@
+mixin jobs(page)
+   //- Список новых работ
+   section(class="new-job "+ page +"__new-job")
+      if (page == 'index')
+         p.content-h1   Наши новые работы
+      else
+         p.content-h1   Примеры работ
+      .new-job__wrapper-job.container
+         //- Левая часть
+         .new-job__left
+            .new-job__list.first
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/job-1.jpg")
+                  p.index-job-title Премиум мебель, Москва
+                  p.type-job-title  Разработка сайтов
+            .new-job__list
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/job-2.jpg")
+                  p.index-job-title Три толстяка, Тамбов
+                  p.type-job-title  Фирменный стиль
+            .new-job__list
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/job-3.jpg")
+                  p.index-job-title Титан Групп, Москва
+                  p.type-job-title  Продвижение сайтов
+         //- Правая часть
+         .new-job__right
+            .new-job__list
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/land-2.jpg")
+                  p.index-job-title КМГПроект, Казахстан
+                  p.type-job-title  Разработка сайтов
+            .new-job__list
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/land-3.jpg")
+                  p.index-job-title Grizzli-airsoft, Москва
+                  p.type-job-title  Разработка сайтов
+            .new-job__list.last
+               a(href="javascript:void(0)")
+                  .new-job__wrap-img.wrap-img
+                     img(src="../img/land-1.jpg")
+                  p.index-job-title сеть мебельных салонов Юнион, Тамбов
+                  p.type-job-title  Разработка сайтов
+      if (page == 'index')
+         .new-job__rectangle.rectangle-job
+            a(href="javascript:void(0)")
+               p  Все работы
+               +svg('arrow-menu', 'arrow')
+   if (page == 'landing')
+      .new-job__order
+         a(href="javascript:void(0)").order-button Оставить заявку
