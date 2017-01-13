@@ -12,7 +12,7 @@
 	&__title {
 		padding-bottom: 28px;
 		position: relative;
-		font: 48px/57px @ubuntu;
+		font: 3rem/3.5625rem @ubuntu;
 		text-transform: uppercase;
 		letter-spacing: 5px;
 		color: #fff;
@@ -21,8 +21,13 @@
 			color: #89ad70;
 
 			&.percent {
-				font-size: 78px;
-				line-height: 85px;
+				font-size: 4.875rem;
+				line-height: 5.3125rem;
+
+				@media (max-width: 459px) {
+					font-size: 2.7rem;
+					line-height: normal;
+				}
 			}
 		}
 
@@ -37,10 +42,19 @@
 			height: 1px;
 			background-color: #9fc187;
 		}
+		
+		@media (max-width: 459px) {
+			font-size: 2.2rem;
+		}
 	}
 
 	&__order {
 		margin-top: 60px;
 		.order(#d35414);
+
+		@media (max-width: 459px) {
+			margin-top: 20px;
+			padding: 14px 60px;
+		}
 	}
 }

@@ -77,6 +77,10 @@
 			transform: rotate(0deg);
 			transition: transform .3s linear;
 
+			&:hover {
+				transform: scale(1.2);
+			}
+
 			&::before {
 				position: absolute;
 				z-index: 1;
@@ -111,13 +115,11 @@
 				&::before {
 					top: auto;
 					bottom: 16px;
-					//transform: rotate(-45deg);
 				}
 
 				&::after {
 					top: auto;
 					bottom: 16px;
-					//transform: rotate(45deg);
 				}
 			}
 		}

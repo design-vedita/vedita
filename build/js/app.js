@@ -52,13 +52,14 @@ var App = {
             App.htmlTag.addClass('edge');
         }
 
-        App.modules.slider = new App.Slider();
+        App.modules.sliderIndex = new App.SliderIndex();
         App.modules.preloader = new App.Preloader();
         App.modules.menu = new App.Menu();
         App.modules.hideblock = new App.HideBlock();
         App.modules.topscroll = new App.TopScroll();
         App.modules.ourtechnologies = new App.OurTechnologies();
         App.modules.tariffplan = new App.TariffPlan();
+        App.modules.sliderreviews = new App.SliderReviews();
 
     });
 
@@ -316,7 +317,7 @@ App.Preloader = (function(App){
     return module;
 
 }(App));
-App.Slider = (function(App){
+App.SliderIndex = (function(App){
     "use strict";
 
     var module = function(){
@@ -340,17 +341,21 @@ App.Slider = (function(App){
             this.size_slider();
 
             App.win.on('resize', $.proxy(this.size_slider, this));
+            App.win.on('resize', $.proxy( this.resize_images, this));
 
             this.$rectangle.on('click', $.proxy(this.rectangle_slider, this));
 
         },
         init_slider: function(){
             // Слайдер на главной
-            var swiper = new Swiper( this.$slider , {
+            this.swiper = new Swiper( this.$slider , {
                 pagination: '.swiper-pagination',
                 paginationClickable: true,
                 direction: 'vertical'
             });
+        },
+        resize_images: function() {
+            this.swiper.update(true);
         },
         size_slider: function() {
             var clientHeight = document.documentElement.clientHeight;
@@ -358,12 +363,56 @@ App.Slider = (function(App){
             this.$slider.css({'height': clientHeight - sum + 'px'});
         },
         rectangle_slider: function(){
-            var clientHeight = document.documentElement.clientHeight;
+            var clientHeight = document.documentElement.clientHeight,
+                $heightMenu = this.$menu.height();
 
             $("body,html").animate({
-                scrollTop: clientHeight
+                scrollTop: clientHeight - $heightMenu
             }, 500);
             return false;
+        }
+    };
+
+    return module;
+
+}(App));
+App.SliderReviews = (function(App){
+
+    "use strict";
+
+    var module = function(){
+        this.options = {
+            self: '.js-reviews'
+        };
+        this.$root = $(this.options.self);
+
+        this.init();
+    };
+
+    module.prototype = {
+        constructor: module,
+        init: function() {
+
+            this.$slider = $('.js-reviews-slider', this.$root);
+
+            this.init_slider();
+
+        },
+        init_slider: function() {
+            var swiper = new Swiper( this.$slider , {
+                slidesPerView: 3,
+                spaceBetween: 60,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false,
+                breakpoints: {
+                    1000: {
+                        slidesPerView: 2
+                    },
+                    768: {
+                        slidesPerView: 1
+                    }
+                }
+            });
         }
     };
 

@@ -4,8 +4,7 @@
 
 	&__points {
 		margin-top: 70px;
-		/*padding-left: 180px;
-		padding-right: 110px;*/
+		padding-left: 180px;
 		padding-bottom: 57px;
 		display: flex;
 		justify-content: flex-start;
@@ -15,10 +14,14 @@
 
 	&__point {
 		position: relative;
-		margin-bottom: 14px;
+		margin-bottom: 61px;
 		width: 33.3333%;
-		//min-height: 70px;
+		min-height: 70px;
 		box-sizing: border-box;
+
+		@-moz-document url-prefix() {
+			margin-bottom: 60px;
+		}
 
 		&.one {
 			width: 31.5%;
@@ -73,6 +76,12 @@
 				height: 3px;
 				background-color: #d35414;
 			}
+
+			.how-we-are-working__circle	{
+				position: absolute;
+				left: 75px;
+				top: calc(~'100% - 12px');
+			}
 		}
 
 		&.four {
@@ -83,7 +92,7 @@
 				bottom: 6px;
 				content: '';
 				display: block;
-				width: 40%;
+				width: 43%;
 				height: 3px;
 				background-color: #d35414;
 			}
@@ -117,22 +126,11 @@
 				bottom: 6px;
 				content: '';
 				display: block;
-				width: 54px;
+				width: 50px;
 				height: 3px;
 				background-color: #d35414;
 			}
 
-			.how-we-are-working__circle {
-				left: -101px;
-				height: 87px;
-
-				&::before {
-					top: 0;
-					left: auto;
-					right: -4px;
-					border-radius: 0 50% 50% 0;
-				}
-			}
 		}
 
 		&.six {
@@ -160,6 +158,16 @@
 				height: 3px;
 				background-color: #d35414;
 			}
+
+			.how-we-are-working__circle	{
+				position: absolute;
+				left: -50px;
+				top: calc(~'-100% - 3px');
+
+				@-moz-document url-prefix() {
+					top: calc(~'-100% - 1.5px');
+				}
+			}
 		}
 
 		&.seven {
@@ -174,13 +182,12 @@
 		p {
 			position: relative;
 			padding-bottom: 38px;
-			display: inline-block;
 			font: 50px/27px @condens_reg;
 			color: #3d3556;
 
 			&::before {
 				position: absolute;
-				left: calc(~'50% - 8px');
+				left: 6px;
 				bottom: 0;
 				content: '';
 				display: block;
@@ -193,15 +200,24 @@
 		}
 
 		span {
+			position: absolute;
+			bottom: 31px;
+			left: 17px;
+			padding-left: 10px;
+			display: inline-block;
+			box-sizing: border-box;
+			width: calc(~'100% - 25px');
 			font: 1.3125rem/1.9375rem @condens_reg;
 			text-transform: uppercase;
 			color: #3d3556;
 		}
 	}
 
-	&__circle {
-		position: absolute;
-		left: 76px;
-		top: calc(~'100% - 10px');
+	&__order {
+		text-align: center;
+
+		.order-button {
+			.order(#89ad70; 12px 39px);
+		}
 	}
 }

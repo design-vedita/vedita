@@ -52,13 +52,14 @@ var App = {
             App.htmlTag.addClass('edge');
         }
 
-        App.modules.slider = new App.Slider();
+        App.modules.sliderIndex = new App.SliderIndex();
         App.modules.preloader = new App.Preloader();
         App.modules.menu = new App.Menu();
         App.modules.hideblock = new App.HideBlock();
         App.modules.topscroll = new App.TopScroll();
         App.modules.ourtechnologies = new App.OurTechnologies();
         App.modules.tariffplan = new App.TariffPlan();
+        App.modules.sliderreviews = new App.SliderReviews();
 
     });
 

@@ -1,4 +1,4 @@
-App.Slider = (function(App){
+App.SliderIndex = (function(App){
     "use strict";
 
     var module = function(){
@@ -22,17 +22,21 @@ App.Slider = (function(App){
             this.size_slider();
 
             App.win.on('resize', $.proxy(this.size_slider, this));
+            App.win.on('resize', $.proxy( this.resize_images, this));
 
             this.$rectangle.on('click', $.proxy(this.rectangle_slider, this));
 
         },
         init_slider: function(){
             // Слайдер на главной
-            var swiper = new Swiper( this.$slider , {
+            this.swiper = new Swiper( this.$slider , {
                 pagination: '.swiper-pagination',
                 paginationClickable: true,
                 direction: 'vertical'
             });
+        },
+        resize_images: function() {
+            this.swiper.update(true);
         },
         size_slider: function() {
             var clientHeight = document.documentElement.clientHeight;
@@ -40,10 +44,11 @@ App.Slider = (function(App){
             this.$slider.css({'height': clientHeight - sum + 'px'});
         },
         rectangle_slider: function(){
-            var clientHeight = document.documentElement.clientHeight;
+            var clientHeight = document.documentElement.clientHeight,
+                $heightMenu = this.$menu.height();
 
             $("body,html").animate({
-                scrollTop: clientHeight
+                scrollTop: clientHeight - $heightMenu
             }, 500);
             return false;
         }

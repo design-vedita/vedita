@@ -88,12 +88,12 @@ mixin header(page)
                |  215-51-36
       //- Шапка сайта слайдер
       if (page == 'landing')
-         .header-bottom
+         .header-bottom.inner__header-bottom
             .header-bottom__slider.swiper-container.js-slider
                .header-bottom__swiper-wrapper.swiper-wrapper
                   .header-bottom__slide.swiper-slide(style={'background-image': 'url(../img/landing.jpg)'})
                      .header-bottom__center-slide
-                        p.header-bottom__title-slide  разработка лендингов
+                        h1.header-bottom__title-slide  разработка лендингов
                            span   под ключ
                            |  рост продаж на
                            span.percent   200%

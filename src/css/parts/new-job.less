@@ -141,7 +141,15 @@
 			background-color: rgba(16, 16, 16, .5);
 			z-index: 1;
 			content: '';
-			transition: opacity .5s ease;
+			transition: opacity .5s ease, visibility .5s linear;
+		}
+
+		&:hover {
+
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
 		}
 
 		&:before {
@@ -180,6 +188,7 @@
 		right: 0;
 		top: -73px;
 		transition: border .5s ease;
+		will-change: border;
 
 		@media (min-width: 240px) and (max-width: 1000px) {
 
@@ -290,10 +299,13 @@
 			right: -105px;
 			width: 33px;
 			height: 33px;
-			transform: rotate(-90deg);
+			transform: rotate(-90deg) scale(1);
 			fill: #fff;
-			top: -15px;
-			transition: width .5s ease, height .5s ease;
+			top: -17px;
+			transition-property: right, height, transform;
+			transition-duration: .5s, .5s, .5s;
+			transition-timing-function: ease;
+			will-change: transform, right, height;
 
 			@media (min-width: 240px) and (max-width: 1000px) {
 
@@ -305,15 +317,10 @@
 
 		&:hover {
 			border-right-color: #d35414;
-			transition: border .5s ease;
-			will-change: border;
 		}
 
 		&:hover .arrow {
-			width: 37px;
-			height: 37px;
-			transition: width .5s ease, height .5s ease;
-			will-change: width, height;
+			transform: rotate(-90deg) scale(1.3);
 		}
 	}
 }
