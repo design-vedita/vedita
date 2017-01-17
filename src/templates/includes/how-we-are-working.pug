@@ -3,15 +3,15 @@ mixin how-we-are-working()
       h2   Как мы работаем?
       .container
          .how-we-are-working__points
-            .how-we-are-working__point.one
+            .how-we-are-working__point.one(data-number="one")
                p  1
-                  span  Название этапа
-            .how-we-are-working__point.two
+                  span  Составление, подписание договора и технического задания
+            .how-we-are-working__point.two(data-number="two")
                p  2
-                  span  Название этапа
-            .how-we-are-working__point.three
+                  span  Сбор информации и прототипирование
+            .how-we-are-working__point.three(data-number="three")
                p  3
-                  span  Название этапа Название этапа Название этапа
+                  span  Дизайн главной страницы
                svg(  width=140
                      height=140
                      viewbox="0 0 140 140"
@@ -20,18 +20,15 @@ mixin how-we-are-working()
                      xmlns="http://www.w3.org/2000/svg"
                   ).how-we-are-working__circle
                   circle(r=65.5 fill="transparent" stroke="#d35414" cx="0" cy="50%" stroke-width="3")
-
-
-            .how-we-are-working__point.five
-               p  5
-                  span  Название этапа
-               //-.how-we-are-working__circle
-            .how-we-are-working__point.four
-               p  4
-                  span  Название этапа
-            .how-we-are-working__point.six
+            .how-we-are-working__point.four(data-number="four")
+                p  4
+                  span  Дизайн второстепенных страниц и компонентов сайта
+            .how-we-are-working__point.five(data-number="five")
+                p  5
+                  span  Вёрстка сайта
+            .how-we-are-working__point.six(data-number="six")
                p  6
-                  span  Название этапа Название этапа Название этапа Название этапа
+                  span  Программирование и сборка
                svg(  width=140
                      height=140
                      viewbox="0 0 140 140"
@@ -40,8 +37,33 @@ mixin how-we-are-working()
                      xmlns="http://www.w3.org/2000/svg"
                   ).how-we-are-working__circle
                   circle(r=65.5 fill="transparent" stroke="#d35414" cx="100%" cy="50%" stroke-width="3")
-            .how-we-are-working__point.seven
+            .how-we-are-working__point.seven(data-number="seven")
                p  7
-                  span  Название этапа
+                  span  Техническая оптимизация
+               svg(  width=140
+                 height=140
+                 viewbox="0 0 140 140"
+                 preserveAspectRatio="xMinYMax meet"
+                 version="1.1"
+                 xmlns="http://www.w3.org/2000/svg"
+                 ).how-we-are-working__circle
+                     circle(r=65.5 fill="transparent" stroke="#d35414" cx="0" cy="50%" stroke-width="3")
+            .how-we-are-working__point.eight(data-number="eight")
+                p  8
+                    span  Тестирование
+            .how-we-are-working__point.nine(data-number="nine")
+                p  9
+                    span  Настройка хостинга, перенос, тестирование
+            .how-we-are-working__point.six.ten.two-sings(data-number="ten")
+                p  10
+                    span  Передача прав на управление сайтом, гарантийное обслуживание
+                svg(  width=140
+                     height=140
+                     viewbox="0 0 140 140"
+                     preserveAspectRatio="xMinYMax meet"
+                     version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                 ).how-we-are-working__circle
+                    circle(r=65.5 fill="transparent" stroke="#d35414" cx="100%" cy="50%" stroke-width="3")
          .how-we-are-working__order
              a(href="Javascript:void(0)").order-button  Заполнить бриф
