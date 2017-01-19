@@ -32,8 +32,7 @@ App.TariffPlan = (function(App){
 
             this.$items.each(function(i){
 
-                $(this).css({'height': ''}); //очищаем высоту у всех блоков, чтобы на ресайзе выставлять высоту
-
+                $(this).css({'height': ''}); //РѕС‡РёС‰Р°РµРј РІС‹СЃРѕС‚Сѓ Сѓ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ
                 if (max < $(this).height()) {
                     max = $(this).height();
                     maxIndex = i;
@@ -41,7 +40,7 @@ App.TariffPlan = (function(App){
 
             });
 
-            this.$items.eq(maxIndex).addClass('js-anchor'); // Добавляем класс, на который не вешаем высоту
+            this.$items.eq(maxIndex).addClass('js-anchor'); // РґРѕР±Р°РІР»СЏРµРј Р°РЅРєРѕСЂ
 
             this.$items.each(function(){
                 (!$(this).hasClass('js-anchor'))

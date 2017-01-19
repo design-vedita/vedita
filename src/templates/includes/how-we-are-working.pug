@@ -3,67 +3,45 @@ mixin how-we-are-working()
       h2   Как мы работаем?
       .container
          .how-we-are-working__points
-            .how-we-are-working__point.one(data-number="one")
+            .how-we-are-working__point.one.even(data-number="one")
                p  1
                   span  Составление, подписание договора и технического задания
-            .how-we-are-working__point.two(data-number="two")
+               .circle.left.how-we-are-working__circle
+            .how-we-are-working__point.two.odd(data-number="two")
                p  2
                   span  Сбор информации и прототипирование
-            .how-we-are-working__point.three(data-number="three")
+               .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.three.even(data-number="three")
                p  3
                   span  Дизайн главной страницы
-               svg(  width=140
-                     height=140
-                     viewbox="0 0 140 140"
-                     preserveAspectRatio="xMinYMax meet"
-                     version="1.1"
-                     xmlns="http://www.w3.org/2000/svg"
-                  ).how-we-are-working__circle
-                  circle(r=65.5 fill="transparent" stroke="#d35414" cx="0" cy="50%" stroke-width="3")
-            .how-we-are-working__point.four(data-number="four")
+               .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.four.odd(data-number="four")
                 p  4
                   span  Дизайн второстепенных страниц и компонентов сайта
-            .how-we-are-working__point.five(data-number="five")
+                .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.five.even(data-number="five")
                 p  5
                   span  Вёрстка сайта
-            .how-we-are-working__point.six(data-number="six")
+                .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.six.odd(data-number="six")
                p  6
                   span  Программирование и сборка
-               svg(  width=140
-                     height=140
-                     viewbox="0 0 140 140"
-                     preserveAspectRatio="xMinYMax meet"
-                     version="1.1"
-                     xmlns="http://www.w3.org/2000/svg"
-                  ).how-we-are-working__circle
-                  circle(r=65.5 fill="transparent" stroke="#d35414" cx="100%" cy="50%" stroke-width="3")
-            .how-we-are-working__point.seven(data-number="seven")
+               .circle.left.how-we-are-working__circle
+            .how-we-are-working__point.seven.even(data-number="seven")
                p  7
                   span  Техническая оптимизация
-               svg(  width=140
-                 height=140
-                 viewbox="0 0 140 140"
-                 preserveAspectRatio="xMinYMax meet"
-                 version="1.1"
-                 xmlns="http://www.w3.org/2000/svg"
-                 ).how-we-are-working__circle
-                     circle(r=65.5 fill="transparent" stroke="#d35414" cx="0" cy="50%" stroke-width="3")
-            .how-we-are-working__point.eight(data-number="eight")
+               .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.four.eight.odd(data-number="eight")
                 p  8
                     span  Тестирование
-            .how-we-are-working__point.nine(data-number="nine")
+                .circle.left.how-we-are-working__circle
+            .how-we-are-working__point.five.nine.even(data-number="nine")
                 p  9
                     span  Настройка хостинга, перенос, тестирование
-            .how-we-are-working__point.six.ten.two-sings(data-number="ten")
+                .circle.right.how-we-are-working__circle
+            .how-we-are-working__point.six.ten.two-sings.odd(data-number="ten")
                 p  10
                     span  Передача прав на управление сайтом, гарантийное обслуживание
-                svg(  width=140
-                     height=140
-                     viewbox="0 0 140 140"
-                     preserveAspectRatio="xMinYMax meet"
-                     version="1.1"
-                     xmlns="http://www.w3.org/2000/svg"
-                 ).how-we-are-working__circle
-                    circle(r=65.5 fill="transparent" stroke="#d35414" cx="100%" cy="50%" stroke-width="3")
+                .circle.left.how-we-are-working__circle
          .how-we-are-working__order
              a(href="Javascript:void(0)").order-button  Заполнить бриф

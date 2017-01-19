@@ -453,8 +453,7 @@ App.TariffPlan = (function(App){
 
             this.$items.each(function(i){
 
-                $(this).css({'height': ''}); //������� ������ � ���� ������, ����� �� ������� ���������� ������
-
+                $(this).css({'height': ''}); //очищаем высоту у всех элементов
                 if (max < $(this).height()) {
                     max = $(this).height();
                     maxIndex = i;
@@ -462,7 +461,7 @@ App.TariffPlan = (function(App){
 
             });
 
-            this.$items.eq(maxIndex).addClass('js-anchor'); // ��������� �����, �� ������� �� ������ ������
+            this.$items.eq(maxIndex).addClass('js-anchor'); // добавляем анкор
 
             this.$items.each(function(){
                 (!$(this).hasClass('js-anchor'))
